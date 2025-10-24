@@ -16,6 +16,9 @@
     <div class="sidebar-header">
       <img src="../media/logo.webp" alt="Logo" class="logo">
       <h2>Stellan University</h2>
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
 
     <ul class="sidebar-menu">
@@ -416,6 +419,23 @@
 
   <script src="../js/announcements.js"></script>
   <script>
+    // Mobile menu toggle function
+    function toggleMobileMenu() {
+      const sidebarMenu = document.querySelector('.sidebar-menu');
+      sidebarMenu.classList.toggle('active');
+    }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const sidebar = document.querySelector('.sidebar');
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (!sidebar.contains(event.target) && window.innerWidth <= 768) {
+        const sidebarMenu = document.querySelector('.sidebar-menu');
+        sidebarMenu.classList.remove('active');
+      }
+    });
+    
     // Navigation function
     function navigateTo(page) {
       const pageUrls = {

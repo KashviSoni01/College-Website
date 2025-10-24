@@ -653,8 +653,408 @@ header {
   color: #f1f1f1;
   padding: 50px 20px 20px;
   font-family: 'Segoe UI', sans-serif;
-
   margin-top: 60px;  
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 1200px) {
+  .rankings-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .programs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .stats-container {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Header adjustments */
+  header {
+    flex-direction: column;
+    padding: 15px 20px;
+    position: relative;
+  }
+  
+  .logo-container {
+    margin-bottom: 15px;
+  }
+  
+  .university-name {
+    font-size: 20px;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .navbar li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navbar li a {
+    padding: 10px 20px;
+    display: block;
+  }
+  
+  /* Hero section */
+  .hero {
+    height: 60vh;
+    margin-top: 120px;
+  }
+  
+  .hero-text {
+    left: 5%;
+    right: 5%;
+    max-width: none;
+    padding: 15px;
+  }
+  
+  .hero-text h2 {
+    font-size: 28px;
+  }
+  
+  .hero-text p {
+    font-size: 16px;
+  }
+  
+  /* Rankings section */
+  #rankings {
+    padding: 60px 20px;
+  }
+  
+  .rankings-title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+  
+  .rankings-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .rank-card {
+    max-width: none;
+    padding: 25px 20px;
+  }
+  
+  .rank-card img {
+    width: 120px;
+  }
+  
+  .rank-card h3 {
+    font-size: 1.8rem;
+  }
+  
+  /* Spotlight section */
+  .spotlight {
+    padding: 60px 20px;
+  }
+  
+  .pillar-title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+  
+  .spotlight-container {
+    gap: 40px;
+  }
+  
+  .spotlight-card {
+    width: 180px;
+  }
+  
+  .spotlight-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  /* Programs section */
+  .programs-section {
+    padding: 40px 20px;
+  }
+  
+  .programs-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .programs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .program-card {
+    border-radius: 12px;
+  }
+  
+  .program-card img {
+    height: 150px;
+  }
+  
+  .program-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .program-card p {
+    font-size: 0.9rem;
+  }
+  
+  /* Stats section */
+  .stats {
+    padding: 60px 20px;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .stats-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .stat-box {
+    min-width: auto;
+  }
+  
+  /* Apply now section */
+  .apply-now {
+    padding: 80px 20px;
+  }
+  
+  .apply-now h2 {
+    font-size: 2.2rem;
+  }
+  
+  .apply-now p {
+    font-size: 1.1rem;
+  }
+  
+  .apply-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .apply-btns a {
+    width: 200px;
+    text-align: center;
+  }
+  
+  /* Footer */
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header for very small screens */
+  header {
+    padding: 10px 15px;
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .university-name {
+    font-size: 18px;
+  }
+  
+  .navbar {
+    gap: 5px;
+  }
+  
+  .navbar li a {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  /* Hero section */
+  .hero {
+    height: 50vh;
+    margin-top: 100px;
+  }
+  
+  .hero-text {
+    padding: 10px;
+  }
+  
+  .hero-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .hero-text p {
+    font-size: 14px;
+  }
+  
+  /* Rankings */
+  #rankings {
+    padding: 40px 15px;
+  }
+  
+  .rankings-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .rank-card {
+    padding: 20px 15px;
+  }
+  
+  .rank-card img {
+    width: 100px;
+    margin-bottom: 15px;
+  }
+  
+  .rank-card h3 {
+    font-size: 1.5rem;
+  }
+  
+  .rank-card p {
+    font-size: 0.9rem;
+  }
+  
+  /* Spotlight */
+  .spotlight {
+    padding: 40px 15px;
+  }
+  
+  .pillar-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .spotlight-container {
+    gap: 30px;
+  }
+  
+  .spotlight-card {
+    width: 150px;
+  }
+  
+  .spotlight-img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .spotlight-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .spotlight-card p {
+    font-size: 0.9rem;
+  }
+  
+  /* Programs */
+  .programs-section {
+    padding: 30px 15px;
+  }
+  
+  .programs-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+  
+  .programs-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .program-card img {
+    height: 120px;
+  }
+  
+  .program-card h3 {
+    font-size: 1rem;
+    margin: 10px 10px 5px 10px;
+  }
+  
+  .program-card p {
+    font-size: 0.85rem;
+    margin: 0 10px 15px 10px;
+  }
+  
+  /* Stats */
+  .stats {
+    padding: 40px 15px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .stat-box i {
+    font-size: 2rem;
+  }
+  
+  .stat-box h2 {
+    font-size: 2rem;
+  }
+  
+  .stat-box p {
+    font-size: 1rem;
+  }
+  
+  /* Apply now */
+  .apply-now {
+    padding: 60px 15px;
+  }
+  
+  .apply-now h2 {
+    font-size: 1.8rem;
+  }
+  
+  .apply-now p {
+    font-size: 1rem;
+  }
+  
+  .apply-btns a {
+    width: 180px;
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 30px 15px 15px;
+  }
+  
+  .footer-container {
+    gap: 25px;
+  }
+  
+  .footer-links ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .social-icons a {
+    margin: 0 5px;
+    font-size: 16px;
+  }
 }
 
 
