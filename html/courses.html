@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Materials | Faculty Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* GLOBAL */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f5f2;
+      color: #3b2a23;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    .faculty-header {
+      text-align: center;
+      background: linear-gradient(to right, #5a3825, #3b2415);
+      color: #fff;
+      padding: 60px 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+
+    .faculty-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .faculty-header p {
+      font-size: 1.1rem;
+      color: #d9c2a5;
+    }
+
+    /* DASHBOARD CARDS */
+    .faculty-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 60px 100px;
+      background: #fff8f2;
+    }
+
+    .portal-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(175,128,79,0.2);
+    }
+
+    .portal-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .portal-card h3 {
+      color: #5a3825;
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
+
+    .portal-card p {
+      color: #7f684f;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .portal-btn {
+      background: #AF804F;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .portal-btn:hover {
+      background: #8e653a;
+    }
+
+    /* UPLOAD INPUT */
+    .upload-input {
+      margin: 15px 0;
+      background: #fff;
+      color: #3b2a23;
+      border: 1px solid #AF804F;
+      border-radius: 8px;
+      padding: 8px 12px;
+      width: 80%;
+      cursor: pointer;
+    }
+
+    .upload-input::-webkit-file-upload-button {
+      background: #AF804F;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .upload-input::-webkit-file-upload-button:hover {
+      background: #c89a63;
+    }
+
+    /* MATERIALS LIST */
+    .materials-list {
+      text-align: center;
+      background: #1a1a1a;
+      padding: 60px 30px;
+      margin: 40px auto;
+      width: 80%;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(175, 128, 79, 0.3);
+      display: none;
+    }
+
+    .materials-list h2 {
+      color: #AF804F;
+      margin-bottom: 25px;
+    }
+
+    .materials-list ul {
+      list-style: none;
+      padding: 0;
+      color: #ddd;
+    }
+
+    .materials-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* FOOTER */
+    .faculty-footer {
+      text-align: center;
+      background: #5a3825;
+      color: #f0e0d0;
+      padding: 25px 0;
+      margin-top: 80px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .faculty-dashboard {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="faculty-header">
+    <h1>Course Materials</h1>
+    <p>Organize, upload, and share your lecture notes and resources efficiently.</p>
+  </header>
+
+  <!-- DASHBOARD -->
+  <section class="faculty-dashboard">
+    <div class="portal-card">
+      <h3><i class="fa-solid fa-upload"></i> Upload New Material</h3>
+      <p>Share lecture notes, assignments, or presentations with your students.</p>
+      <input type="file" id="uploadFile" class="upload-input">
+      <button class="portal-btn" onclick="uploadFile()">Upload</button>
+    </div>
+
+    <div class="portal-card">
+      <h3><i class="fa-solid fa-folder-open"></i> View Uploaded Materials</h3>
+      <p>Access and manage your previously uploaded files.</p>
+      <button class="portal-btn" onclick="viewMaterials()">View Files</button>
+    </div>
+
+    <div class="portal-card">
+      <h3><i class="fa-solid fa-book"></i> Course Overview</h3>
+      <p>Update course details, syllabus, or resources for your students.</p>
+      <button class="portal-btn" onclick="editCourse()">Edit Course</button>
+    </div>
+  </section>
+
+  <!-- MATERIALS LIST -->
+  <section class="materials-list" id="materialsList">
+    <h2>Your Uploaded Materials</h2>
+    <ul id="materialsContainer"></ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="faculty-footer">
+    <p>© 2025 Stellan University | Faculty Portal</p>
+  </footer>
+
+  <script>
+    function uploadFile() {
+      const fileInput = document.getElementById('uploadFile');
+      const materialsContainer = document.getElementById('materialsContainer');
+      const materialsList = document.getElementById('materialsList');
+
+      if (fileInput.files.length === 0) {
+        alert("Please select a file to upload!");
+        return;
+      }
+
+      const fileName = fileInput.files[0].name;
+
+      materialsList.style.display = 'block';
+
+      const li = document.createElement('li');
+      li.textContent = `📄 ${fileName}`;
+      materialsContainer.appendChild(li);
+
+      fileInput.value = '';
+      alert("File uploaded successfully!");
+    }
+
+    function viewMaterials() {
+      const materialsList = document.getElementById('materialsList');
+      materialsList.style.display = 'block';
+    }
+
+    function editCourse() {
+      alert("Course details editing feature coming soon!");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | Stellan University</title>
+  <link rel="stylesheet" href="../css/faculty.css">
+  <link rel="stylesheet" href="../css/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../media/logo.webp" alt="Logo" class="logo">
+      <h2>Stellan University</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li onclick="navigateTo('dashboard')"><i class="fas fa-house"></i> Dashboard</li>
+      <li onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> My Courses</li>
+      <li onclick="navigateTo('attendance')"><i class="fas fa-user-check"></i> Attendance</li>
+      <li onclick="navigateTo('grades')"><i class="fas fa-clipboard-list"></i> Grades</li>
+      <li onclick="navigateTo('research')"><i class="fas fa-flask"></i> Research</li>
+      <li onclick="navigateTo('announcements')"><i class="fas fa-bullhorn"></i> Announcements</li>
+      <li class="active" onclick="navigateTo('profile')"><i class="fas fa-user-cog"></i> Profile</li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="main-header">
+      <h1>Profile Settings</h1>
+      <p>Manage your personal information and account settings</p>
+    </header>
+
+    <!-- Profile Overview -->
+    <section class="profile-overview">
+      <div class="profile-card">
+        <div class="profile-avatar">
+          <img src="../media/chancellor.png" alt="Profile Picture" id="profileImage">
+          <button class="change-photo-btn" onclick="changeProfilePhoto()">
+            <i class="fas fa-camera"></i>
+          </button>
+        </div>
+        <div class="profile-info">
+          <h2>Professor John Williams</h2>
+          <p class="profile-title">Professor of Computer Science</p>
+          <p class="profile-department">Department of Computer Science</p>
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="stat-number">8</span>
+              <span class="stat-label">Years Teaching</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">12</span>
+              <span class="stat-label">Publications</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">285</span>
+              <span class="stat-label">Students</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Tabs -->
+    <section class="profile-tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="personal">Personal Info</button>
+        <button class="tab-btn" data-tab="academic">Academic</button>
+        <button class="tab-btn" data-tab="security">Security</button>
+        <button class="tab-btn" data-tab="preferences">Preferences</button>
+      </div>
+    </section>
+
+    <!-- Personal Info Tab -->
+    <section class="tab-content active" id="personal">
+      <div class="content-header">
+        <h2>Personal Information</h2>
+        <button class="btn-primary" onclick="editPersonalInfo()">
+          <i class="fas fa-edit"></i> Edit
+        </button>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-section">
+          <h3>Basic Information</h3>
+          <div class="info-item">
+            <label>Full Name</label>
+            <span>Professor John Williams</span>
+          </div>
+          <div class="info-item">
+            <label>Email</label>
+            <span>john.williams@stellan.edu</span>
+          </div>
+          <div class="info-item">
+            <label>Phone</label>
+            <span>+1 (555) 123-4567</span>
+          </div>
+          <div class="info-item">
+            <label>Date of Birth</label>
+            <span>March 15, 1980</span>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h3>Contact Information</h3>
+          <div class="info-item">
+            <label>Office Location</label>
+            <span>Computer Science Building, Room 301</span>
+          </div>
+          <div class="info-item">
+            <label>Office Hours</label>
+            <span>Monday-Friday, 2:00 PM - 4:00 PM</span>
+          </div>
+          <div class="info-item">
+            <label>Office Phone</label>
+            <span>+1 (555) 123-4568</span>
+          </div>
+          <div class="info-item">
+            <label>Emergency Contact</label>
+            <span>Jane Williams - +1 (555) 987-6543</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Tab -->
+    <section class="tab-content" id="academic">
+      <div class="content-header">
+        <h2>Academic Information</h2>
+        <button class="btn-primary" onclick="editAcademicInfo()">
+          <i class="fas fa-edit"></i> Edit
+        </button>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-section">
+          <h3>Education</h3>
+          <div class="education-item">
+            <div class="education-degree">Ph.D. in Computer Science</div>
+            <div class="education-school">Stanford University</div>
+            <div class="education-year">2008</div>
+          </div>
+          <div class="education-item">
+            <div class="education-degree">M.S. in Computer Science</div>
+            <div class="education-school">MIT</div>
+            <div class="education-year">2005</div>
+          </div>
+          <div class="education-item">
+            <div class="education-degree">B.S. in Computer Science</div>
+            <div class="education-school">UC Berkeley</div>
+            <div class="education-year">2003</div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h3>Professional Experience</h3>
+          <div class="experience-item">
+            <div class="experience-title">Professor of Computer Science</div>
+            <div class="experience-company">Stellan University</div>
+            <div class="experience-duration">2016 - Present</div>
+          </div>
+          <div class="experience-item">
+            <div class="experience-title">Associate Professor</div>
+            <div class="experience-company">Stellan University</div>
+            <div class="experience-duration">2012 - 2016</div>
+          </div>
+          <div class="experience-item">
+            <div class="experience-title">Assistant Professor</div>
+            <div class="experience-company">Stellan University</div>
+            <div class="experience-duration">2008 - 2012</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h3>Research Interests</h3>
+        <div class="research-interests">
+          <span class="interest-tag">Machine Learning</span>
+          <span class="interest-tag">Artificial Intelligence</span>
+          <span class="interest-tag">Data Science</span>
+          <span class="interest-tag">Computer Vision</span>
+          <span class="interest-tag">Natural Language Processing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Tab -->
+    <section class="tab-content" id="security">
+      <div class="content-header">
+        <h2>Security Settings</h2>
+      </div>
+
+      <div class="security-sections">
+        <div class="security-section">
+          <h3>Change Password</h3>
+          <form class="security-form">
+            <div class="form-group">
+              <label>Current Password</label>
+              <input type="password" placeholder="Enter current password">
+            </div>
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password" placeholder="Enter new password">
+            </div>
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <input type="password" placeholder="Confirm new password">
+            </div>
+            <button type="submit" class="submit-btn">Change Password</button>
+          </form>
+        </div>
+
+        <div class="security-section">
+          <h3>Two-Factor Authentication</h3>
+          <div class="security-status">
+            <div class="status-item">
+              <span class="status-label">2FA Status</span>
+              <span class="status-value enabled">Enabled</span>
+            </div>
+            <div class="status-item">
+              <span class="status-label">Last Updated</span>
+              <span class="status-value">January 15, 2024</span>
+            </div>
+          </div>
+          <button class="btn-secondary">Manage 2FA</button>
+        </div>
+
+        <div class="security-section">
+          <h3>Login Activity</h3>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-info">
+                <span class="activity-device">Chrome on Windows</span>
+                <span class="activity-location">New York, NY</span>
+              </div>
+              <span class="activity-time">2 hours ago</span>
+            </div>
+            <div class="activity-item">
+              <div class="activity-info">
+                <span class="activity-device">Safari on iPhone</span>
+                <span class="activity-location">New York, NY</span>
+              </div>
+              <span class="activity-time">1 day ago</span>
+            </div>
+            <div class="activity-item">
+              <div class="activity-info">
+                <span class="activity-device">Firefox on Mac</span>
+                <span class="activity-location">New York, NY</span>
+              </div>
+              <span class="activity-time">3 days ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preferences Tab -->
+    <section class="tab-content" id="preferences">
+      <div class="content-header">
+        <h2>Preferences</h2>
+        <button class="btn-primary" onclick="savePreferences()">
+          <i class="fas fa-save"></i> Save
+        </button>
+      </div>
+
+      <div class="preferences-sections">
+        <div class="preferences-section">
+          <h3>Notification Settings</h3>
+          <div class="preference-item">
+            <label>
+              <input type="checkbox" checked>
+              Email notifications
+            </label>
+          </div>
+          <div class="preference-item">
+            <label>
+              <input type="checkbox" checked>
+              SMS notifications
+            </label>
+          </div>
+          <div class="preference-item">
+            <label>
+              <input type="checkbox">
+              Push notifications
+            </label>
+          </div>
+          <div class="preference-item">
+            <label>
+              <input type="checkbox" checked>
+              Weekly reports
+            </label>
+          </div>
+        </div>
+
+        <div class="preferences-section">
+          <h3>Display Settings</h3>
+          <div class="preference-item">
+            <label>Theme</label>
+            <select>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="auto">Auto</option>
+            </select>
+          </div>
+          <div class="preference-item">
+            <label>Language</label>
+            <select>
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+            </select>
+          </div>
+          <div class="preference-item">
+            <label>Time Zone</label>
+            <select>
+              <option value="EST">Eastern Time</option>
+              <option value="PST">Pacific Time</option>
+              <option value="CST">Central Time</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="preferences-section">
+          <h3>Privacy Settings</h3>
+          <div class="preference-item">
+            <label>
+              <input type="checkbox" checked>
+              Show online status
+            </label>
+          </div>
+          <div class="preference-item">
+            <label>
+              <input type="checkbox">
+              Allow profile viewing
+            </label>
+          </div>
+          <div class="preference-item">
+            <label>
+              <input type="checkbox" checked>
+              Show research interests
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div id="editPersonalModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('editPersonalModal')">&times;</span>
+      <h2>Edit Personal Information</h2>
+      <form>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" value="Professor John Williams">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" value="john.williams@stellan.edu">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" value="+1 (555) 123-4567">
+        </div>
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" value="1980-03-15">
+        </div>
+        <div class="form-group">
+          <label>Office Location</label>
+          <input type="text" value="Computer Science Building, Room 301">
+        </div>
+        <div class="form-group">
+          <label>Office Hours</label>
+          <input type="text" value="Monday-Friday, 2:00 PM - 4:00 PM">
+        </div>
+        <button type="submit" class="submit-btn">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="editAcademicModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('editAcademicModal')">&times;</span>
+      <h2>Edit Academic Information</h2>
+      <form>
+        <div class="form-group">
+          <label>Current Position</label>
+          <input type="text" value="Professor of Computer Science">
+        </div>
+        <div class="form-group">
+          <label>Department</label>
+          <input type="text" value="Department of Computer Science">
+        </div>
+        <div class="form-group">
+          <label>Research Interests</label>
+          <textarea rows="3" placeholder="Enter your research interests"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Biography</label>
+          <textarea rows="4" placeholder="Enter your biography"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/profile.js"></script>
+  <script>
+    // Navigation function
+    function navigateTo(page) {
+      const pageUrls = {
+        'dashboard': 'faculty-dashboard.html',
+        'courses': 'faculty-courses.html',
+        'attendance': 'attendance.html',
+        'grades': 'grades.html',
+        'research': 'research.html',
+        'announcements': 'announcements.html',
+        'profile': 'profile.html'
+      };
+      
+      if (pageUrls[page]) {
+        window.location.href = pageUrls[page];
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        // Clear any stored session data
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Show logout message
+        alert('You have been logged out successfully!');
+        
+        // Redirect to login page
+        window.location.href = '../html/login.html';
+      }
+    }
+  </script>
+</body>
+</html>

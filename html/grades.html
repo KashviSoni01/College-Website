@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grades | Stellan University</title>
+  <link rel="stylesheet" href="../css/faculty.css">
+  <link rel="stylesheet" href="../css/grades.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../media/logo.webp" alt="Logo" class="logo">
+      <h2>Stellan University</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li onclick="navigateTo('dashboard')"><i class="fas fa-house"></i> Dashboard</li>
+      <li onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> My Courses</li>
+      <li onclick="navigateTo('attendance')"><i class="fas fa-user-check"></i> Attendance</li>
+      <li class="active" onclick="navigateTo('grades')"><i class="fas fa-clipboard-list"></i> Grades</li>
+      <li onclick="navigateTo('research')"><i class="fas fa-flask"></i> Research</li>
+      <li onclick="navigateTo('announcements')"><i class="fas fa-bullhorn"></i> Announcements</li>
+      <li onclick="navigateTo('profile')"><i class="fas fa-user-cog"></i> Profile</li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="main-header">
+      <h1>Grade Management</h1>
+      <p>Manage student grades, assignments, and academic performance</p>
+    </header>
+
+    <!-- Grade Overview -->
+    <section class="grade-overview">
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="overview-content">
+          <h3>285</h3>
+          <p>Total Students</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="overview-content">
+          <h3>85.2%</h3>
+          <p>Average Grade</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-tasks"></i>
+        </div>
+        <div class="overview-content">
+          <h3>45</h3>
+          <p>Pending Grading</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="overview-content">
+          <h3>12</h3>
+          <p>Failing Students</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <button class="action-btn" onclick="showModal('gradeAssignmentModal')">
+          <i class="fas fa-edit"></i>
+          <span>Grade Assignment</span>
+        </button>
+        <button class="action-btn" onclick="showModal('bulkGradeModal')">
+          <i class="fas fa-upload"></i>
+          <span>Bulk Upload</span>
+        </button>
+        <button class="action-btn" onclick="showModal('createAssignmentModal')">
+          <i class="fas fa-plus"></i>
+          <span>Create Assignment</span>
+        </button>
+        <button class="action-btn" onclick="showModal('gradeReportModal')">
+          <i class="fas fa-chart-bar"></i>
+          <span>Grade Report</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="grade-controls">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="studentSearch" placeholder="Search students...">
+      </div>
+      <div class="filter-controls">
+        <select id="courseFilter">
+          <option value="all">All Courses</option>
+          <option value="CS101">Introduction to Programming</option>
+          <option value="CS201">Data Structures & Algorithms</option>
+          <option value="CS301">Web Development</option>
+        </select>
+        <select id="assignmentFilter">
+          <option value="all">All Assignments</option>
+          <option value="assignment1">Assignment 1</option>
+          <option value="assignment2">Assignment 2</option>
+          <option value="midterm">Midterm Exam</option>
+          <option value="final">Final Exam</option>
+        </select>
+        <select id="gradeFilter">
+          <option value="all">All Grades</option>
+          <option value="excellent">A (90-100)</option>
+          <option value="good">B (80-89)</option>
+          <option value="average">C (70-79)</option>
+          <option value="poor">D (60-69)</option>
+          <option value="failing">F (0-59)</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Grade Book -->
+    <section class="grade-book-section">
+      <div class="section-header">
+        <h2>Grade Book</h2>
+        <div class="section-actions">
+          <button class="btn-secondary" onclick="exportGrades()">
+            <i class="fas fa-download"></i> Export
+          </button>
+          <button class="btn-primary" onclick="showModal('gradeAssignmentModal')">
+            <i class="fas fa-plus"></i> Add Grade
+          </button>
+        </div>
+      </div>
+
+      <div class="grade-book-container">
+        <div class="grade-book-table">
+          <table class="grades-table">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Assignment 1</th>
+                <th>Assignment 2</th>
+                <th>Midterm</th>
+                <th>Final</th>
+                <th>Average</th>
+                <th>Grade</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="gradesTableBody">
+              <!-- Grade data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grade Analytics -->
+    <section class="grade-analytics">
+      <h2>Grade Analytics</h2>
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <h3>Grade Distribution</h3>
+          <div class="grade-distribution">
+            <div class="grade-bar">
+              <span class="grade-label">A (90-100)</span>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 25%"></div>
+              </div>
+              <span class="grade-count">25%</span>
+            </div>
+            <div class="grade-bar">
+              <span class="grade-label">B (80-89)</span>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 35%"></div>
+              </div>
+              <span class="grade-count">35%</span>
+            </div>
+            <div class="grade-bar">
+              <span class="grade-label">C (70-79)</span>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 25%"></div>
+              </div>
+              <span class="grade-count">25%</span>
+            </div>
+            <div class="grade-bar">
+              <span class="grade-label">D (60-69)</span>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 10%"></div>
+              </div>
+              <span class="grade-count">10%</span>
+            </div>
+            <div class="grade-bar">
+              <span class="grade-label">F (0-59)</span>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 5%"></div>
+              </div>
+              <span class="grade-count">5%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Course Performance</h3>
+          <div class="course-performance">
+            <div class="performance-item">
+              <span class="course-name">CS101</span>
+              <div class="performance-metrics">
+                <div class="metric">
+                  <span class="metric-label">Average</span>
+                  <span class="metric-value">87.5%</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Pass Rate</span>
+                  <span class="metric-value">92%</span>
+                </div>
+              </div>
+            </div>
+            <div class="performance-item">
+              <span class="course-name">CS201</span>
+              <div class="performance-metrics">
+                <div class="metric">
+                  <span class="metric-label">Average</span>
+                  <span class="metric-value">83.2%</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Pass Rate</span>
+                  <span class="metric-value">88%</span>
+                </div>
+              </div>
+            </div>
+            <div class="performance-item">
+              <span class="course-name">CS301</span>
+              <div class="performance-metrics">
+                <div class="metric">
+                  <span class="metric-label">Average</span>
+                  <span class="metric-value">85.8%</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Pass Rate</span>
+                  <span class="metric-value">90%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Assignment Statistics</h3>
+          <div class="assignment-stats">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Assignment 1</h4>
+                <p>Average: 85.2%</p>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Assignment 2</h4>
+                <p>Average: 78.5%</p>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 78%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Midterm</h4>
+                <p>Average: 82.1%</p>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 82%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div id="gradeAssignmentModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('gradeAssignmentModal')">&times;</span>
+      <h2>Grade Assignment</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course</label>
+          <select id="gradeCourse">
+            <option value="CS101">Introduction to Programming</option>
+            <option value="CS201">Data Structures & Algorithms</option>
+            <option value="CS301">Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Select Assignment</label>
+          <select id="gradeAssignment">
+            <option value="assignment1">Assignment 1</option>
+            <option value="assignment2">Assignment 2</option>
+            <option value="midterm">Midterm Exam</option>
+            <option value="final">Final Exam</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Student</label>
+          <select id="gradeStudent">
+            <option value="">Select Student</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Grade (0-100)</label>
+          <input type="number" id="gradeValue" min="0" max="100" placeholder="Enter grade">
+        </div>
+        <div class="form-group">
+          <label>Comments</label>
+          <textarea id="gradeComments" rows="3" placeholder="Add feedback..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Grade</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="bulkGradeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('bulkGradeModal')">&times;</span>
+      <h2>Bulk Upload Grades</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course</label>
+          <select>
+            <option value="CS101">Introduction to Programming</option>
+            <option value="CS201">Data Structures & Algorithms</option>
+            <option value="CS301">Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Select Assignment</label>
+          <select>
+            <option value="assignment1">Assignment 1</option>
+            <option value="assignment2">Assignment 2</option>
+            <option value="midterm">Midterm Exam</option>
+            <option value="final">Final Exam</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Upload CSV File</label>
+          <input type="file" accept=".csv" id="gradeFile">
+          <small>Format: Student ID, Grade, Comments</small>
+        </div>
+        <div class="form-group">
+          <label>Grade Scale</label>
+          <select>
+            <option value="100">0-100</option>
+            <option value="4">0-4.0</option>
+            <option value="letter">A-F</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Upload Grades</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="createAssignmentModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('createAssignmentModal')">&times;</span>
+      <h2>Create Assignment</h2>
+      <form>
+        <div class="form-group">
+          <label>Assignment Title</label>
+          <input type="text" placeholder="Enter assignment title">
+        </div>
+        <div class="form-group">
+          <label>Select Course</label>
+          <select>
+            <option value="CS101">Introduction to Programming</option>
+            <option value="CS201">Data Structures & Algorithms</option>
+            <option value="CS301">Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Due Date</label>
+          <input type="datetime-local">
+        </div>
+        <div class="form-group">
+          <label>Total Points</label>
+          <input type="number" placeholder="Enter total points">
+        </div>
+        <div class="form-group">
+          <label>Assignment Type</label>
+          <select>
+            <option value="homework">Homework</option>
+            <option value="quiz">Quiz</option>
+            <option value="exam">Exam</option>
+            <option value="project">Project</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea rows="4" placeholder="Assignment description..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Create Assignment</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="gradeReportModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('gradeReportModal')">&times;</span>
+      <h2>Generate Grade Report</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course(s)</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Introduction to Programming</label>
+            <label><input type="checkbox" checked> Data Structures & Algorithms</label>
+            <label><input type="checkbox" checked> Web Development</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Report Type</label>
+          <select>
+            <option value="summary">Grade Summary</option>
+            <option value="detailed">Detailed Report</option>
+            <option value="comparison">Course Comparison</option>
+            <option value="trend">Grade Trends</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Export Format</label>
+          <select>
+            <option value="pdf">PDF</option>
+            <option value="excel">Excel</option>
+            <option value="csv">CSV</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Include</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Student Names</label>
+            <label><input type="checkbox" checked> Grade Distribution</label>
+            <label><input type="checkbox"> Individual Comments</label>
+            <label><input type="checkbox"> Statistics</label>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Generate Report</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/grades.js"></script>
+  <script>
+    // Navigation function
+    function navigateTo(page) {
+      const pageUrls = {
+        'dashboard': 'faculty-dashboard.html',
+        'courses': 'faculty-courses.html',
+        'attendance': 'attendance.html',
+        'grades': 'grades.html',
+        'research': 'research.html',
+        'announcements': 'announcements.html',
+        'profile': 'profile.html'
+      };
+      
+      if (pageUrls[page]) {
+        window.location.href = pageUrls[page];
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        // Clear any stored session data
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Show logout message
+        alert('You have been logged out successfully!');
+        
+        // Redirect to login page
+        window.location.href = '../html/login.html';
+      }
+    }
+  </script>
+</body>
+</html>

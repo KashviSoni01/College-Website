@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stellan University</title>
+  <link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Header with logo and nav -->
+  <header>
+    <div class="logo-container">
+      <img src="../media/logo.webp" alt="Stellan University Logo" class="logo">
+      <span class="university-name">Stellan University</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="navbar">
+        <li><a href="http://127.0.0.1:5500/html/home.html">Home</a></li>
+        <li>
+          <a href="http://127.0.0.1:5500/html/login.html">Login</a>
+        </li>
+        <li>
+          <a href="#">About Us</a>
+          <ul class="dropdown">
+            <li><a href="#program">Programs</a></li>
+            <li><a href="http://127.0.0.1:5500/html/campusLife.html">Campus Life</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Online Library</a>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Video Background -->
+  <section class="hero">
+    <video autoplay muted loop class="background-video">
+      <source src="../media/front.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay Text -->
+    <div class="hero-text">
+      <h2>Welcome to Stellan University</h2>
+      <p>Founded in 2025, Stellan is a hub of innovation, knowledge, and growth.</p>
+    </div>
+  </section>
+
+  <!-- Rank Section -->
+  <section id="rankings">
+    <h2 class="rankings-title">Our Global Rankings</h2>
+    <div class="rankings-row">
+
+      <div class="rank-card">
+        <img src="../media/QS.webp" alt="QS">
+        <h3>#1</h3>
+        <p>Ranked among the World’s Top Universities for Academic & Employer Reputation</p>
+      </div>
+
+      <div class="rank-card">
+        <img src="../media/THE.webp" alt="THE">
+        <h3>Top 100</h3>
+        <p>Recognized Globally for Excellence in Teaching, Research, and Innovation</p>
+      </div>
+
+      <div class="rank-card">
+        <img src="../media/BESU.webp" alt="BESU">
+        <h3>A+</h3>
+        <p>Honored as a Leading Institution in Global Research and Academic Performance</p>
+      </div>
+
+      <div class="rank-card">
+        <img src="../media/ARWU.webp" alt="ARWU">
+        <h3>Top 10</h3>
+        <p>Celebrated for Outstanding Research Output and Prestigious Academic Achievements</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section class="spotlight">
+    <h2 class="pillar-title">Our Four Pillars of Excellence</h2>
+    <div class="spotlight-container">
+
+      <div class="spotlight-card" data-name="Dr. John Smith" data-role="Chancellor"
+        data-bio="About:
+Dr. John Smith has served in higher education for over 30 years, holding senior leadership roles across internationally recognized universities. He is known for his commitment to academic excellence and his ability to build global collaborations.
+Role at Stellan University:
+As Chancellor, he sets the overall vision and direction of the university, ensuring it achieves international recognition while upholding strong academic and ethical standards.">
+        <div class="spotlight-img">
+          <img src="../media/chancellor.png" alt="Leader 1">
+        </div>
+        <h3>Dr. John Smith</h3>
+        <p>Chancellor</p>
+      </div>
+
+      <div class="spotlight-card" data-name="Prof. Jane Doe" data-role="Vice Chancellor"
+        data-bio="Prof. Jane Doe is an acclaimed researcher in computer science and education, with numerous publications in international journals. She has led multiple innovation-driven academic projects across Asia and Europe.
+Role at Stellan University:
+She is responsible for academic and research leadership, introducing new programs, strengthening research opportunities, and fostering global academic partnerships.">
+        <div class="spotlight-img">
+          <img src="../media/vice_chancellor.png" alt="Leader 2">
+        </div>
+        <h3>Prof. Jane Doe</h3>
+        <p>Vice Chancellor</p>
+      </div>
+
+      <div class="spotlight-card" data-name="Dr. Alan Brown" data-role="Dean of Faculty"
+        data-bio="Dr. Alan Brown is a respected academician with extensive experience in faculty development and curriculum design. He has mentored hundreds of educators and has contributed to modernizing teaching practices in higher education.
+Role at Stellan University:
+He oversees the faculty body, ensuring high-quality teaching, updated curricula, and continuous professional growth of professors to provide students with world-class education.">
+        <div class="spotlight-img">
+          <img src="../media/dean.png" alt="Leader 3">
+        </div>
+        <h3>Dr. Alan Brown</h3>
+        <p>Dean of Faculty</p>
+      </div>
+
+      <div class="spotlight-card" data-name="Ms. Emily White" data-role="Director"
+        data-bio="Ms. Emily White has a strong background in administration and student affairs, having worked in higher education institutions for over 15 years. She is passionate about student engagement and holistic development.
+Role at Stellan University:
+She manages administrative excellence and student services, focusing on initiatives that support student well-being, leadership opportunities, and a vibrant campus culture.">
+        <div class="spotlight-img">
+          <img src="../media/director.png" alt="Leader 4">
+        </div>
+        <h3>Ms. Emily White</h3>
+        <p>Director</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-name"></h2>
+      <h4 id="modal-role"></h4>
+      <p id="modal-bio"></p>
+    </div>
+  </div>
+
+  <section id="program" class="programs-section">
+    <center>
+      <h2>Programs at Stellan University</h2>
+    </center>
+    <div class="programs-grid">
+
+      <!-- Row 1 -->
+      <div class="program-card">
+        <img
+          src="https://mvnu.edu/content/uploads/2024/01/mvnu-online-difference-between-admin-and-business-management.jpeg-1024x512.webp"
+          alt="Business Administration">
+        <h3>Business Administration</h3>
+        <p>Master leadership, strategy, and global business management. Build skills to drive success in any
+          organization.</p>
+      </div>
+
+      <div class="program-card">
+         <a href="http://127.0.0.1:5500/html/aboutProgram.html">
+        <img
+          src="https://assets-global.website-files.com/65f88552c6ad8ce7791beb99/660ecc4ff4accd1c70d5f3b5_careviso-about-careers-work-with-us.jpg"
+          alt="Computer Science"></a>
+        <h3>Computer Science</h3>
+        <p>Dive into coding, AI, and cutting-edge technologies. Shape the future by creating innovative software and
+          intelligent systems.</p>
+      </div>
+
+      <div class="program-card">
+        <img
+          src="https://img.freepik.com/premium-photo/close-up-ux-developer-ui-designer-brainstorming-about-mobile-app-interface-wireframe-design-table-with-customer-breif-color-code-modern-officecreative-digital-development-agency_265022-22347.jpg"
+          alt="Design & Innovation">
+        <h3>Design & Innovation</h3>
+        <p>Transform ideas into creative solutions. Learn design thinking and innovation to tackle real-world
+          challenges.</p>
+      </div>
+
+      <div class="program-card">
+        <img
+          src="https://th.bing.com/th/id/R.61136503549482bff78c2e648da0699a?rik=HPE3gzRk17p0vA&riu=http%3a%2f%2fengineersnetwork.org%2fwp-content%2fuploads%2f2019%2f02%2fWhat-is-the-field-of-Mechanical-Engineering-2.jpg&ehk=0z9y%2bmQtETAwog7naFrtTeiJ%2fCA%2bkaE8cs7chST0stU%3d&risl=&pid=ImgRaw&r=0"
+          alt="Mechanical Engineering">
+        <h3>Mechanical Engineering</h3>
+        <p>Design and build advanced machines, robotics, and industrial systems. Turn concepts into powerful engineering
+          solutions.</p>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="program-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.MVyzCEjblYRCuHC9vIHv6gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
+          alt="Electrical Engineering">
+        <h3>Electrical Engineering</h3>
+        <p>Power the world with electronics, circuits, and energy systems. Learn to innovate in a fast-evolving field.
+        </p>
+      </div>
+
+      <div class="program-card">
+        <img
+          src="https://tse4.mm.bing.net/th/id/OIP.Uq7c70SNw6n87MsSIKs5sAHaFe?w=800&h=591&rs=1&pid=ImgDetMain&o=7&rm=3"
+          alt="Civil Engineering">
+        <h3>Civil Engineering</h3>
+        <p>Shape the infrastructure of tomorrow. Plan, design, and construct resilient buildings and urban landscapes.
+        </p>
+      </div>
+
+      <div class="program-card">
+        <img
+          src="https://tse4.mm.bing.net/th/id/OIP.B_pCqszEFaOvDSdn30ep-gHaFj?w=4032&h=3024&rs=1&pid=ImgDetMain&o=7&rm=3"
+          alt="Psychology">
+        <h3>Psychology</h3>
+        <p>Explore the human mind and behavior. Understand emotions, cognition, and mental health to make a meaningful
+          impact.</p>
+      </div>
+
+      <div class="program-card">
+        <img src="https://www.niagaracollege.ca/wp-content/uploads/culinary-class-students-scaled.jpg"
+          alt="Culinary">
+        <h3>Culinary</h3>
+        <p>“Craft exceptional dining experiences by combining tradition, innovation, and culinary artistry.”</p>
+        </p>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="program-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.v5RWMynsIQLOLSvIKA5dRwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
+          alt="Environmental Science">
+        <h3>Environmental Science</h3>
+        <p>Protect our planet through research and innovation. Study ecosystems, sustainability, and climate solutions.
+        </p>
+      </div>
+
+      <div class="program-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.JZuXJVbgAyVEvh3zQ9NMSwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
+          alt="Marketing">
+        <h3>Marketing</h3>
+        <p>Learn branding, digital marketing, and consumer psychology. Create campaigns that truly resonate.</p>
+      </div>
+
+      <div class="program-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.ySUImPtoyHhDPwodwiDsqgHaE7?rs=1&pid=ImgDetMain&o=7&rm=3"
+          alt="Medicine Program">
+        <h3>Bachelor of Medicine</h3>
+        <p>Prepare for a career in healthcare with advanced medical knowledge and hands-on training.</p>
+      </div>
+
+
+      <div class="program-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.jRLlIssLrBFeXRkIi1RHlQHaE3?w=1000&h=658&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Biotechnology">
+        <h3>Biotechnology</h3>
+        <p>Explore genetics, molecular biology, and innovative biotech solutions to improve health and environment.</p>
+      </div>
+
+    </div>
+  </section>
+  
+<!-- Counter Section -->
+<section class="stats">
+  <div class="stats-header">
+    <h2 class="section-title">University at a Glance</h2>
+    <span class="section-line"></span>
+    <p class="section-subtitle">Proudly showcasing our student achievements</p>
+  </div>
+
+  <div class="stats-container">
+    <div class="stat-box">
+      <i class="fas fa-user-graduate"></i>
+      <h2 class="count" data-target="15000">0</h2>
+      <p>Students Applied</p>
+    </div>
+    <div class="stat-box">
+      <i class="fas fa-book-open"></i>
+      <h2 class="count" data-target="12000">0</h2>
+      <p>Students Enrolled</p>
+    </div>
+    <div class="stat-box">
+      <i class="fas fa-briefcase"></i>
+      <h2 class="count" data-target="9500">0</h2>
+      <p>Students Placed</p>
+    </div>
+  </div>
+</section>
+
+  <!-- Apply Now Section -->
+  <section class="apply-now">
+    <h2>Empower Your Future at Stellan University</h2>
+    <p>Discover academic excellence and vibrant student life at our prestigious institution. 
+       Take the first step towards shaping your career and future today.</p>
+    <div class="apply-btns">
+      <a href="http://127.0.0.1:5500/html/apply.html" class="primary">Apply Now</a>
+    </div>
+  </section>
+
+
+  <footer id="contact" class="footer">
+
+  <div class="footer-container">
+    <!-- Left Column: Logo & About -->
+    <div class="footer-about">
+      <h2 class="footer-logo">Stellan University</h2>
+      <p>
+        Empowering students through education, innovation, and excellence.  
+        Our mission is to shape the leaders of tomorrow.
+      </p>
+    </div>
+
+    <!-- Middle Column: Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Admissions</a></li>
+        <li><a href="#program">Programs</a></li>
+        <li><a href="#">Research</a></li>
+        <li><a href="#">Campus Life</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Column: Contact & Social -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>📍 123 University Road, City, Country</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉️ info@university.edu</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 University Name. All rights reserved.</p>
+  </div>
+</footer>
+
+  <script src="../js/home.js"></script>
+</body>
+
+
+
+</html>

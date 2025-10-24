@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Courses | Stellan University</title>
+  <link rel="stylesheet" href="../css/faculty.css">
+  <link rel="stylesheet" href="../css/faculty-courses.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Ensure sidebar menu items are clickable */
+    .sidebar-menu li {
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .sidebar-menu li:hover {
+      background-color: #a67c52;
+      color: #fff;
+      transform: translateX(5px);
+    }
+    
+    .sidebar-menu li:active {
+      transform: translateX(2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../media/logo.webp" alt="Logo" class="logo">
+      <h2>Stellan University</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li onclick="navigateTo('dashboard')"><i class="fas fa-house"></i> Dashboard</li>
+      <li class="active" onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> My Courses</li>
+      <li onclick="navigateTo('attendance')"><i class="fas fa-user-check"></i> Attendance</li>
+      <li onclick="navigateTo('grades')"><i class="fas fa-clipboard-list"></i> Grades</li>
+      <li onclick="navigateTo('research')"><i class="fas fa-flask"></i> Research</li>
+      <li onclick="navigateTo('announcements')"><i class="fas fa-bullhorn"></i> Announcements</li>
+      <li onclick="navigateTo('profile')"><i class="fas fa-user-cog"></i> Profile</li>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="main-header">
+      <h1>My Courses</h1>
+      <p>Manage all the courses you are teaching this semester</p>
+    </header>
+
+    <!-- Statistics Overview -->
+    <section class="stats-overview">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="stat-content">
+          <h3>3</h3>
+          <p>Active Courses</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-content">
+          <h3>285</h3>
+          <p>Total Students</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="stat-content">
+          <h3>87%</h3>
+          <p>Avg. Attendance</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-tasks"></i>
+        </div>
+        <div class="stat-content">
+          <h3>12</h3>
+          <p>Pending Tasks</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <button class="action-btn" onclick="showModal('uploadModal')">
+          <i class="fas fa-upload"></i>
+          <span>Upload Material</span>
+        </button>
+        <button class="action-btn" onclick="showModal('announcementModal')">
+          <i class="fas fa-bullhorn"></i>
+          <span>Send Announcement</span>
+        </button>
+        <button class="action-btn" onclick="showModal('gradeModal')">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Grade Assignments</span>
+        </button>
+        <button class="action-btn" onclick="showModal('scheduleModal')">
+          <i class="fas fa-calendar-plus"></i>
+          <span>Schedule Class</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Course Filter and Search -->
+    <section class="course-controls">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="courseSearch" placeholder="Search courses...">
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Courses</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+      </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="courses-section" id="courses-container">
+      <!-- Course cards will be generated here -->
+    </section>
+
+    <!-- Recent Activity -->
+    <section class="recent-activity">
+      <h2>Recent Activity</h2>
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="fas fa-file-upload"></i>
+          </div>
+          <div class="activity-content">
+            <h4>Uploaded Lecture Notes</h4>
+            <p>Data Structures & Algorithms - Week 8 materials</p>
+            <span class="activity-time">2 hours ago</span>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="activity-content">
+            <h4>Graded Assignments</h4>
+            <p>Web Development - Assignment 3 (45 submissions)</p>
+            <span class="activity-time">5 hours ago</span>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="activity-content">
+            <h4>Attendance Updated</h4>
+            <p>Introduction to Programming - 95% attendance</p>
+            <span class="activity-time">1 day ago</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div id="uploadModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('uploadModal')">&times;</span>
+      <h2>Upload Course Material</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course</label>
+          <select>
+            <option>Introduction to Programming</option>
+            <option>Data Structures & Algorithms</option>
+            <option>Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Material Type</label>
+          <select>
+            <option>Lecture Notes</option>
+            <option>Assignment</option>
+            <option>Reading Material</option>
+            <option>Video</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Upload File</label>
+          <input type="file" multiple>
+        </div>
+        <button type="submit" class="submit-btn">Upload</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="announcementModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('announcementModal')">&times;</span>
+      <h2>Send Announcement</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course(s)</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox"> Introduction to Programming</label>
+            <label><input type="checkbox"> Data Structures & Algorithms</label>
+            <label><input type="checkbox"> Web Development</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Enter subject">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Enter your message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Announcement</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="gradeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('gradeModal')">&times;</span>
+      <h2>Grade Assignments</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course</label>
+          <select>
+            <option>Introduction to Programming</option>
+            <option>Data Structures & Algorithms</option>
+            <option>Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Assignment</label>
+          <select>
+            <option>Assignment 1</option>
+            <option>Assignment 2</option>
+            <option>Assignment 3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Upload Grades (CSV)</label>
+          <input type="file" accept=".csv">
+        </div>
+        <button type="submit" class="submit-btn">Upload Grades</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="scheduleModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('scheduleModal')">&times;</span>
+      <h2>Schedule Class</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course</label>
+          <select>
+            <option>Introduction to Programming</option>
+            <option>Data Structures & Algorithms</option>
+            <option>Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Date & Time</label>
+          <input type="datetime-local">
+        </div>
+        <div class="form-group">
+          <label>Class Type</label>
+          <select>
+            <option>Lecture</option>
+            <option>Lab Session</option>
+            <option>Discussion</option>
+            <option>Exam</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea rows="3" placeholder="Class description"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Schedule Class</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Navigation function
+    function navigateTo(page) {
+      console.log('Navigating to:', page); // Debug log
+      const pageUrls = {
+        'dashboard': 'faculty-dashboard.html',
+        'courses': 'faculty-courses.html',
+        'attendance': 'attendance.html',
+        'grades': 'grades.html',
+        'research': 'research.html',
+        'announcements': 'announcements.html',
+        'profile': 'profile.html'
+      };
+      
+      if (pageUrls[page]) {
+        console.log('Redirecting to:', pageUrls[page]); // Debug log
+        window.location.href = pageUrls[page];
+      } else {
+        console.error('Page not found:', page); // Debug log
+      }
+    }
+    
+    // Ensure navigation is available globally
+    window.navigateTo = navigateTo;
+    
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        // Clear any stored session data
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Show logout message
+        alert('You have been logged out successfully!');
+        
+        // Redirect to login page
+        window.location.href = '../html/login.html';
+      }
+    }
+  </script>
+  <script src="../js/faculty-courses.js"></script>
+  <script>
+    const courses = [
+      {
+        id: 1,
+        title: "Introduction to Programming",
+        code: "CS101",
+        description: "Learn Python basics including variables, loops, functions, and small projects. This course provides a solid foundation in programming concepts.",
+        duration: "12 weeks",
+        students: 120,
+        progress: 45,
+        status: "active",
+        instructor: "Prof. Williams",
+        schedule: "Mon, Wed, Fri 10:00 AM",
+        room: "CS-201",
+        credits: 3,
+        attendance: 92,
+        assignments: 5,
+        nextClass: "2024-01-15",
+        materials: 12,
+        announcements: 3
+      },
+      {
+        id: 2,
+        title: "Data Structures & Algorithms",
+        code: "CS201",
+        description: "Covers arrays, linked lists, stacks, queues, trees, and sorting/searching algorithms. Advanced programming concepts and problem-solving techniques.",
+        duration: "10 weeks",
+        students: 90,
+        progress: 70,
+        status: "active",
+        instructor: "Prof. Williams",
+        schedule: "Tue, Thu 2:00 PM",
+        room: "CS-301",
+        credits: 4,
+        attendance: 88,
+        assignments: 7,
+        nextClass: "2024-01-16",
+        materials: 18,
+        announcements: 2
+      },
+      {
+        id: 3,
+        title: "Web Development",
+        code: "CS301",
+        description: "Build websites with HTML, CSS, JS, and understand basic backend concepts. Full-stack development fundamentals.",
+        duration: "14 weeks",
+        students: 75,
+        progress: 30,
+        status: "active",
+        instructor: "Prof. Williams",
+        schedule: "Mon, Wed 4:00 PM",
+        room: "CS-401",
+        credits: 3,
+        attendance: 95,
+        assignments: 3,
+        nextClass: "2024-01-15",
+        materials: 8,
+        announcements: 1
+      }
+    ];
+
+    const container = document.getElementById('courses-container');
+
+    function renderCourses(coursesToRender = courses) {
+      container.innerHTML = '';
+      coursesToRender.forEach(course => {
+        const card = document.createElement('div');
+        card.classList.add('course-card');
+        card.setAttribute('data-status', course.status);
+        
+        const statusColor = course.status === 'active' ? '#4CAF50' : 
+                           course.status === 'completed' ? '#2196F3' : '#FF9800';
+        
+        card.innerHTML = `
+          <div class="course-header">
+            <div class="course-title-section">
+              <h3>${course.title}</h3>
+              <span class="course-code">${course.code}</span>
+            </div>
+            <div class="course-status" style="background-color: ${statusColor}">
+              ${course.status.charAt(0).toUpperCase() + course.status.slice(1)}
+            </div>
+          </div>
+          
+          <div class="course-description">${course.description}</div>
+          
+          <div class="course-stats">
+            <div class="stat-item">
+              <i class="fas fa-users"></i>
+              <span>${course.students} Students</span>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-clock"></i>
+              <span>${course.schedule}</span>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>${course.room}</span>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-credit-card"></i>
+              <span>${course.credits} Credits</span>
+            </div>
+          </div>
+          
+          <div class="progress-section">
+            <div class="progress-header">
+              <span>Course Progress</span>
+              <span>${course.progress}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-bar-inner" style="width: ${course.progress}%"></div>
+            </div>
+          </div>
+          
+          <div class="course-metrics">
+            <div class="metric">
+              <div class="metric-value">${course.attendance}%</div>
+              <div class="metric-label">Attendance</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">${course.assignments}</div>
+              <div class="metric-label">Assignments</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">${course.materials}</div>
+              <div class="metric-label">Materials</div>
+            </div>
+          </div>
+          
+          <div class="course-actions">
+            <button class="action-btn primary" onclick="viewCourse(${course.id})">
+              <i class="fas fa-eye"></i>
+              View Details
+            </button>
+            <button class="action-btn secondary" onclick="manageCourse(${course.id})">
+              <i class="fas fa-cog"></i>
+              Manage
+            </button>
+            <button class="action-btn tertiary" onclick="uploadMaterial(${course.id})">
+              <i class="fas fa-upload"></i>
+              Upload
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Initialize courses
+    renderCourses();
+
+    // Search functionality
+    document.getElementById('courseSearch').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const filteredCourses = courses.filter(course => 
+        course.title.toLowerCase().includes(searchTerm) ||
+        course.code.toLowerCase().includes(searchTerm) ||
+        course.description.toLowerCase().includes(searchTerm)
+      );
+      renderCourses(filteredCourses);
+    });
+
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        let filteredCourses = courses;
+        
+        if (filter !== 'all') {
+          filteredCourses = courses.filter(course => course.status === filter);
+        }
+        
+        renderCourses(filteredCourses);
+      });
+    });
+
+    // Course action functions
+    function viewCourse(courseId) {
+      const course = courses.find(c => c.id === courseId);
+      alert(`Viewing details for ${course.title}\n\nStudents: ${course.students}\nProgress: ${course.progress}%\nAttendance: ${course.attendance}%\nNext Class: ${course.nextClass}`);
+    }
+
+    function manageCourse(courseId) {
+      const course = courses.find(c => c.id === courseId);
+      alert(`Managing ${course.title}\n\nThis would open the course management panel with:\n- Student roster\n- Assignment management\n- Grade book\n- Attendance tracking`);
+    }
+
+    function uploadMaterial(courseId) {
+      const course = courses.find(c => c.id === courseId);
+      showModal('uploadModal');
+    }
+
+    // Modal functions
+    function showModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>

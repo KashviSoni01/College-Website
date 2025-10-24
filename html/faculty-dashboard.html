@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Dashboard | Stellan University</title>
+  <link rel="stylesheet" href="../css/faculty.css">
+  <link rel="stylesheet" href="../css/faculty-dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Ensure sidebar menu items are clickable */
+    .sidebar-menu li {
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .sidebar-menu li:hover {
+      background-color: #a67c52;
+      color: #fff;
+      transform: translateX(5px);
+    }
+    
+    .sidebar-menu li:active {
+      transform: translateX(2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../media/logo.webp" alt="Logo" class="logo">
+      <h2>Stellan University</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="active" onclick="navigateTo('dashboard')"><i class="fas fa-house"></i> Dashboard</li>
+      <li onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> My Courses</li>
+      <li onclick="navigateTo('attendance')"><i class="fas fa-user-check"></i> Attendance</li>
+      <li onclick="navigateTo('grades')"><i class="fas fa-clipboard-list"></i> Grades</li>
+      <li onclick="navigateTo('research')"><i class="fas fa-flask"></i> Research</li>
+      <li onclick="navigateTo('announcements')"><i class="fas fa-bullhorn"></i> Announcements</li>
+      <li onclick="navigateTo('profile')"><i class="fas fa-user-cog"></i> Profile</li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="main-header">
+      <h1>Welcome, Professor Williams 👋</h1>
+      <p>Here’s your faculty dashboard overview</p>
+    </header>
+
+    <section class="dashboard-cards">
+      <div class="card">
+        <i class="fas fa-book"></i>
+        <h3>3 Courses</h3>
+        <p>Currently Teaching</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-user-graduate"></i>
+        <h3>120 Students</h3>
+        <p>Across all classes</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-calendar-check"></i>
+        <h3>85%</h3>
+        <p>Overall Attendance</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-star"></i>
+        <h3>4 Research Papers</h3>
+        <p>Published This Year</p>
+      </div>
+    </section>
+
+    <section class="announcements">
+      <h2>Recent Announcements</h2>
+      <ul>
+        <li><strong>Exam Schedule:</strong> Mid-semester exams start from 5th November.</li>
+        <li><strong>Workshop:</strong> Faculty Development Workshop on 29th October.</li>
+        <li><strong>Submission:</strong> Research proposal submission deadline extended to 2nd November.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script>
+    // Navigation function
+    function navigateTo(page) {
+      const pageUrls = {
+        'dashboard': 'faculty-dashboard.html',
+        'courses': 'faculty-courses.html',
+        'attendance': 'attendance.html',
+        'grades': 'grades.html',
+        'research': 'research.html',
+        'announcements': 'announcements.html',
+        'profile': 'profile.html'
+      };
+      
+      if (pageUrls[page]) {
+        window.location.href = pageUrls[page];
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        // Clear any stored session data
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Show logout message
+        alert('You have been logged out successfully!');
+        
+        // Redirect to login page
+        window.location.href = '../html/login.html';
+      }
+    }
+  </script>
+
+</body>
+</html>

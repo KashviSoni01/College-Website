@@ -1,0 +1,160 @@
+/* Faculty Dashboard Page Styles */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* General Layout */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #3e2a1e;
+  overflow-x: hidden;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  background: transparent;
+}
+
+.main-header {
+  margin-bottom: 30px;
+}
+
+.main-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3e2a1e;
+  margin: 0 0 10px 0;
+  background: linear-gradient(135deg, #3e2a1e, #a67c52);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.main-header p {
+  font-size: 1.1rem;
+  color: #6b5a47;
+  margin: 0;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card i {
+  font-size: 2.5rem;
+  color: #a67c52;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 15px 0 10px;
+  color: #3e2a1e;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #6b5a47;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Announcements */
+.announcements {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.announcements h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3e2a1e;
+  margin-bottom: 25px;
+  background: linear-gradient(135deg, #3e2a1e, #a67c52);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.announcements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.announcements li {
+  background: rgba(166, 124, 82, 0.1);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 4px solid #a67c52;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.announcements li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.announcements li strong {
+  color: #a67c52;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px;
+  }
+  
+  .main-header h1 {
+    font-size: 2rem;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 25px;
+  }
+  
+  .announcements {
+    padding: 25px;
+  }
+}

@@ -1,0 +1,150 @@
+/* General Layout */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  height: 100vh;
+  background-color: #f9f5f1;
+  color: #3e2a1e;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #3e2a1e;
+  color: #f4d19a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.sidebar-header {
+  text-align: center;
+}
+
+.sidebar-header .logo {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.sidebar-header h2 {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+}
+
+.sidebar-menu li {
+  padding: 15px 30px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar-menu li:hover,
+.sidebar-menu li.active {
+  background-color: #a67c52;
+  color: #fff;
+}
+
+.sidebar-footer {
+  text-align: center;
+  margin-top: auto;
+}
+
+.logout-btn {
+  background-color: #a67c52;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #8c6239;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.main-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #3e2a1e;
+}
+
+.main-header p {
+  color: #6b5a47;
+}
+
+/* Cards */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card i {
+  font-size: 2rem;
+  color: #a67c52;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+  color: #3e2a1e;
+}
+
+/* Announcements */
+.announcements {
+  margin-top: 50px;
+}
+
+.announcements h2 {
+  font-size: 1.6rem;
+  color: #3e2a1e;
+  margin-bottom: 20px;
+}
+
+.announcements ul {
+  list-style: none;
+  padding: 0;
+}
+
+.announcements li {
+  background: #fff;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-left: 4px solid #a67c52;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}

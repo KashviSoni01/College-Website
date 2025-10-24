@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance | Stellan University</title>
+  <link rel="stylesheet" href="../css/faculty.css">
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../media/logo.webp" alt="Logo" class="logo">
+      <h2>Stellan University</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li onclick="navigateTo('dashboard')"><i class="fas fa-house"></i> Dashboard</li>
+      <li onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> My Courses</li>
+      <li class="active" onclick="navigateTo('attendance')"><i class="fas fa-user-check"></i> Attendance</li>
+      <li onclick="navigateTo('grades')"><i class="fas fa-clipboard-list"></i> Grades</li>
+      <li onclick="navigateTo('research')"><i class="fas fa-flask"></i> Research</li>
+      <li onclick="navigateTo('announcements')"><i class="fas fa-bullhorn"></i> Announcements</li>
+      <li onclick="navigateTo('profile')"><i class="fas fa-user-cog"></i> Profile</li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="main-header">
+      <h1>Attendance Management</h1>
+      <p>Track and manage student attendance across all your courses</p>
+    </header>
+
+    <!-- Attendance Overview -->
+    <section class="attendance-overview">
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="overview-content">
+          <h3>285</h3>
+          <p>Total Students</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <div class="overview-content">
+          <h3>87%</h3>
+          <p>Overall Attendance</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="overview-content">
+          <h3>23</h3>
+          <p>Low Attendance</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="overview-content">
+          <h3>+5%</h3>
+          <p>This Week</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <button class="action-btn" onclick="showModal('markAttendanceModal')">
+          <i class="fas fa-check-circle"></i>
+          <span>Mark Attendance</span>
+        </button>
+        <button class="action-btn" onclick="showModal('bulkUpdateModal')">
+          <i class="fas fa-edit"></i>
+          <span>Bulk Update</span>
+        </button>
+        <button class="action-btn" onclick="showModal('exportModal')">
+          <i class="fas fa-download"></i>
+          <span>Export Report</span>
+        </button>
+        <button class="action-btn" onclick="showModal('settingsModal')">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="attendance-controls">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="studentSearch" placeholder="Search students...">
+      </div>
+      <div class="filter-controls">
+        <select id="courseFilter">
+          <option value="all">All Courses</option>
+          <option value="CS101">Introduction to Programming</option>
+          <option value="CS201">Data Structures & Algorithms</option>
+          <option value="CS301">Web Development</option>
+        </select>
+        <select id="attendanceFilter">
+          <option value="all">All Students</option>
+          <option value="present">Present Today</option>
+          <option value="absent">Absent Today</option>
+          <option value="low">Low Attendance</option>
+        </select>
+        <input type="date" id="dateFilter" value="2024-01-15">
+      </div>
+    </section>
+
+    <!-- Attendance Table -->
+    <section class="attendance-table-section">
+      <div class="table-header">
+        <h2>Today's Attendance</h2>
+        <div class="table-actions">
+          <button class="btn-secondary" onclick="selectAll()">
+            <i class="fas fa-check-square"></i> Select All
+          </button>
+          <button class="btn-primary" onclick="markSelectedPresent()">
+            <i class="fas fa-check"></i> Mark Present
+          </button>
+          <button class="btn-danger" onclick="markSelectedAbsent()">
+            <i class="fas fa-times"></i> Mark Absent
+          </button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="attendance-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="selectAllCheckbox"></th>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Status</th>
+              <th>Attendance %</th>
+              <th>Last Present</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="attendanceTableBody">
+            <!-- Attendance data will be populated here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Attendance Analytics -->
+    <section class="attendance-analytics">
+      <h2>Attendance Analytics</h2>
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <h3>Course-wise Attendance</h3>
+          <div class="course-stats">
+            <div class="course-stat">
+              <span class="course-name">CS101</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 92%"></div>
+              </div>
+              <span class="percentage">92%</span>
+            </div>
+            <div class="course-stat">
+              <span class="course-name">CS201</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 88%"></div>
+              </div>
+              <span class="percentage">88%</span>
+            </div>
+            <div class="course-stat">
+              <span class="course-name">CS301</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%"></div>
+              </div>
+              <span class="percentage">95%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Weekly Trend</h3>
+          <div class="trend-chart">
+            <div class="trend-day">
+              <span>Mon</span>
+              <div class="trend-bar" style="height: 85%"></div>
+              <span>85%</span>
+            </div>
+            <div class="trend-day">
+              <span>Tue</span>
+              <div class="trend-bar" style="height: 92%"></div>
+              <span>92%</span>
+            </div>
+            <div class="trend-day">
+              <span>Wed</span>
+              <div class="trend-bar" style="height: 88%"></div>
+              <span>88%</span>
+            </div>
+            <div class="trend-day">
+              <span>Thu</span>
+              <div class="trend-bar" style="height: 90%"></div>
+              <span>90%</span>
+            </div>
+            <div class="trend-day">
+              <span>Fri</span>
+              <div class="trend-bar" style="height: 87%"></div>
+              <span>87%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Low Attendance Students</h3>
+          <div class="low-attendance-list">
+            <div class="student-item">
+              <div class="student-info">
+                <span class="student-name">John Doe</span>
+                <span class="student-id">STU001</span>
+              </div>
+              <div class="attendance-rate">65%</div>
+            </div>
+            <div class="student-item">
+              <div class="student-info">
+                <span class="student-name">Jane Smith</span>
+                <span class="student-id">STU002</span>
+              </div>
+              <div class="attendance-rate">72%</div>
+            </div>
+            <div class="student-item">
+              <div class="student-info">
+                <span class="student-name">Mike Johnson</span>
+                <span class="student-id">STU003</span>
+              </div>
+              <div class="attendance-rate">68%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div id="markAttendanceModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('markAttendanceModal')">&times;</span>
+      <h2>Mark Attendance</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course</label>
+          <select id="attendanceCourse">
+            <option value="CS101">Introduction to Programming</option>
+            <option value="CS201">Data Structures & Algorithms</option>
+            <option value="CS301">Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="attendanceDate" value="2024-01-15">
+        </div>
+        <div class="form-group">
+          <label>Class Time</label>
+          <input type="time" id="classTime" value="10:00">
+        </div>
+        <div class="form-group">
+          <label>Notes (Optional)</label>
+          <textarea id="attendanceNotes" rows="3" placeholder="Add any notes about the class..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Start Marking Attendance</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="bulkUpdateModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('bulkUpdateModal')">&times;</span>
+      <h2>Bulk Update Attendance</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course</label>
+          <select>
+            <option value="CS101">Introduction to Programming</option>
+            <option value="CS201">Data Structures & Algorithms</option>
+            <option value="CS301">Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Date Range</label>
+          <div class="date-range">
+            <input type="date" placeholder="From Date">
+            <span>to</span>
+            <input type="date" placeholder="To Date">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Update Type</label>
+          <select>
+            <option value="present">Mark All Present</option>
+            <option value="absent">Mark All Absent</option>
+            <option value="excused">Mark All Excused</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Reason (Optional)</label>
+          <textarea rows="3" placeholder="Reason for bulk update..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Update Attendance</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="exportModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('exportModal')">&times;</span>
+      <h2>Export Attendance Report</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course(s)</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Introduction to Programming</label>
+            <label><input type="checkbox" checked> Data Structures & Algorithms</label>
+            <label><input type="checkbox" checked> Web Development</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Date Range</label>
+          <div class="date-range">
+            <input type="date" placeholder="From Date">
+            <span>to</span>
+            <input type="date" placeholder="To Date">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Export Format</label>
+          <select>
+            <option value="excel">Excel (.xlsx)</option>
+            <option value="csv">CSV (.csv)</option>
+            <option value="pdf">PDF (.pdf)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Include</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Student Details</label>
+            <label><input type="checkbox" checked> Attendance Summary</label>
+            <label><input type="checkbox"> Individual Reports</label>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Export Report</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('settingsModal')">&times;</span>
+      <h2>Attendance Settings</h2>
+      <form>
+        <div class="form-group">
+          <label>Default Attendance Threshold</label>
+          <input type="number" value="75" min="0" max="100" placeholder="Minimum attendance percentage">
+        </div>
+        <div class="form-group">
+          <label>Auto-mark Absent After</label>
+          <select>
+            <option value="15">15 minutes</option>
+            <option value="30" selected>30 minutes</option>
+            <option value="45">45 minutes</option>
+            <option value="60">1 hour</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Notification Settings</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Email low attendance alerts</label>
+            <label><input type="checkbox" checked> Weekly attendance reports</label>
+            <label><input type="checkbox"> SMS notifications</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Attendance Codes</label>
+          <div class="code-settings">
+            <div class="code-item">
+              <span>Present</span>
+              <input type="text" value="P" maxlength="1">
+            </div>
+            <div class="code-item">
+              <span>Absent</span>
+              <input type="text" value="A" maxlength="1">
+            </div>
+            <div class="code-item">
+              <span>Excused</span>
+              <input type="text" value="E" maxlength="1">
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Save Settings</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/attendance.js"></script>
+  <script>
+    // Navigation function
+    function navigateTo(page) {
+      const pageUrls = {
+        'dashboard': 'faculty-dashboard.html',
+        'courses': 'faculty-courses.html',
+        'attendance': 'attendance.html',
+        'grades': 'grades.html',
+        'research': 'research.html',
+        'announcements': 'announcements.html',
+        'profile': 'profile.html'
+      };
+      
+      if (pageUrls[page]) {
+        window.location.href = pageUrls[page];
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        // Clear any stored session data
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Show logout message
+        alert('You have been logged out successfully!');
+        
+        // Redirect to login page
+        window.location.href = '../html/login.html';
+      }
+    }
+  </script>
+</body>
+</html>

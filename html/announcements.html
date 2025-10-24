@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements | Stellan University</title>
+  <link rel="stylesheet" href="../css/faculty.css">
+  <link rel="stylesheet" href="../css/announcements.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../media/logo.webp" alt="Logo" class="logo">
+      <h2>Stellan University</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li onclick="navigateTo('dashboard')"><i class="fas fa-house"></i> Dashboard</li>
+      <li onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> My Courses</li>
+      <li onclick="navigateTo('attendance')"><i class="fas fa-user-check"></i> Attendance</li>
+      <li onclick="navigateTo('grades')"><i class="fas fa-clipboard-list"></i> Grades</li>
+      <li onclick="navigateTo('research')"><i class="fas fa-flask"></i> Research</li>
+      <li class="active" onclick="navigateTo('announcements')"><i class="fas fa-bullhorn"></i> Announcements</li>
+      <li onclick="navigateTo('profile')"><i class="fas fa-user-cog"></i> Profile</li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="main-header">
+      <h1>Announcements</h1>
+      <p>Communicate with your students and manage course announcements</p>
+    </header>
+
+    <!-- Announcements Overview -->
+    <section class="announcements-overview">
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-bullhorn"></i>
+        </div>
+        <div class="overview-content">
+          <h3>24</h3>
+          <p>Total Announcements</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-eye"></i>
+        </div>
+        <div class="overview-content">
+          <h3>89%</h3>
+          <p>Read Rate</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="overview-content">
+          <h3>3</h3>
+          <p>Scheduled</p>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="overview-content">
+          <h3>285</h3>
+          <p>Total Recipients</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <button class="action-btn" onclick="showModal('createAnnouncementModal')">
+          <i class="fas fa-plus"></i>
+          <span>Create Announcement</span>
+        </button>
+        <button class="action-btn" onclick="showModal('scheduleAnnouncementModal')">
+          <i class="fas fa-clock"></i>
+          <span>Schedule Message</span>
+        </button>
+        <button class="action-btn" onclick="showModal('bulkAnnouncementModal')">
+          <i class="fas fa-broadcast-tower"></i>
+          <span>Bulk Send</span>
+        </button>
+        <button class="action-btn" onclick="showModal('templatesModal')">
+          <i class="fas fa-file-alt"></i>
+          <span>Templates</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="announcements-controls">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="announcementSearch" placeholder="Search announcements...">
+      </div>
+      <div class="filter-controls">
+        <select id="courseFilter">
+          <option value="all">All Courses</option>
+          <option value="CS101">Introduction to Programming</option>
+          <option value="CS201">Data Structures & Algorithms</option>
+          <option value="CS301">Web Development</option>
+        </select>
+        <select id="statusFilter">
+          <option value="all">All Status</option>
+          <option value="sent">Sent</option>
+          <option value="scheduled">Scheduled</option>
+          <option value="draft">Draft</option>
+        </select>
+        <select id="dateFilter">
+          <option value="all">All Time</option>
+          <option value="today">Today</option>
+          <option value="week">This Week</option>
+          <option value="month">This Month</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Announcements List -->
+    <section class="announcements-section">
+      <div class="section-header">
+        <h2>Recent Announcements</h2>
+        <div class="section-actions">
+          <button class="btn-secondary" onclick="exportAnnouncements()">
+            <i class="fas fa-download"></i> Export
+          </button>
+          <button class="btn-primary" onclick="showModal('createAnnouncementModal')">
+            <i class="fas fa-plus"></i> New Announcement
+          </button>
+        </div>
+      </div>
+
+      <div class="announcements-list" id="announcementsList">
+        <!-- Announcements will be populated here -->
+      </div>
+    </section>
+
+    <!-- Announcement Analytics -->
+    <section class="announcement-analytics">
+      <h2>Announcement Analytics</h2>
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <h3>Engagement Rate</h3>
+          <div class="engagement-stats">
+            <div class="engagement-item">
+              <span class="engagement-label">Opened</span>
+              <div class="engagement-bar">
+                <div class="engagement-fill" style="width: 89%"></div>
+              </div>
+              <span class="engagement-value">89%</span>
+            </div>
+            <div class="engagement-item">
+              <span class="engagement-label">Clicked</span>
+              <div class="engagement-bar">
+                <div class="engagement-fill" style="width: 45%"></div>
+              </div>
+              <span class="engagement-value">45%</span>
+            </div>
+            <div class="engagement-item">
+              <span class="engagement-label">Replied</span>
+              <div class="engagement-bar">
+                <div class="engagement-fill" style="width: 12%"></div>
+              </div>
+              <span class="engagement-value">12%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Course Performance</h3>
+          <div class="course-performance">
+            <div class="performance-item">
+              <span class="course-name">CS101</span>
+              <div class="performance-metrics">
+                <div class="metric">
+                  <span class="metric-label">Sent</span>
+                  <span class="metric-value">8</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Read Rate</span>
+                  <span class="metric-value">92%</span>
+                </div>
+              </div>
+            </div>
+            <div class="performance-item">
+              <span class="course-name">CS201</span>
+              <div class="performance-metrics">
+                <div class="metric">
+                  <span class="metric-label">Sent</span>
+                  <span class="metric-value">6</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Read Rate</span>
+                  <span class="metric-value">88%</span>
+                </div>
+              </div>
+            </div>
+            <div class="performance-item">
+              <span class="course-name">CS301</span>
+              <div class="performance-metrics">
+                <div class="metric">
+                  <span class="metric-label">Sent</span>
+                  <span class="metric-value">10</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Read Rate</span>
+                  <span class="metric-value">85%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Recent Activity</h3>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Assignment Reminder Sent</h4>
+                <p>CS101 - Assignment 3 due tomorrow</p>
+                <span class="activity-time">2 hours ago</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fas fa-calendar"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Class Cancelled</h4>
+                <p>CS201 - Wednesday's class cancelled</p>
+                <span class="activity-time">1 day ago</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Lecture Notes Posted</h4>
+                <p>CS301 - Week 8 materials available</p>
+                <span class="activity-time">2 days ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div id="createAnnouncementModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('createAnnouncementModal')">&times;</span>
+      <h2>Create Announcement</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course(s)</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Introduction to Programming</label>
+            <label><input type="checkbox"> Data Structures & Algorithms</label>
+            <label><input type="checkbox"> Web Development</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Enter announcement subject">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="6" placeholder="Enter your message"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Priority</label>
+          <select>
+            <option value="normal">Normal</option>
+            <option value="high">High</option>
+            <option value="urgent">Urgent</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Send Options</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Email</label>
+            <label><input type="checkbox"> SMS</label>
+            <label><input type="checkbox"> Push Notification</label>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Send Announcement</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="scheduleAnnouncementModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('scheduleAnnouncementModal')">&times;</span>
+      <h2>Schedule Announcement</h2>
+      <form>
+        <div class="form-group">
+          <label>Select Course(s)</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Introduction to Programming</label>
+            <label><input type="checkbox"> Data Structures & Algorithms</label>
+            <label><input type="checkbox"> Web Development</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Enter announcement subject">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="6" placeholder="Enter your message"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Schedule Date & Time</label>
+          <input type="datetime-local">
+        </div>
+        <div class="form-group">
+          <label>Recurrence</label>
+          <select>
+            <option value="none">No Recurrence</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Schedule Announcement</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="bulkAnnouncementModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('bulkAnnouncementModal')">&times;</span>
+      <h2>Bulk Send Announcements</h2>
+      <form>
+        <div class="form-group">
+          <label>Select All Courses</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Introduction to Programming</label>
+            <label><input type="checkbox" checked> Data Structures & Algorithms</label>
+            <label><input type="checkbox" checked> Web Development</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message Template</label>
+          <select>
+            <option value="assignment">Assignment Reminder</option>
+            <option value="exam">Exam Notice</option>
+            <option value="class">Class Update</option>
+            <option value="general">General Announcement</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Custom Message</label>
+          <textarea rows="4" placeholder="Enter your message"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Send Time</label>
+          <select>
+            <option value="immediate">Send Immediately</option>
+            <option value="scheduled">Schedule for Later</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Send Bulk Announcements</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="templatesModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('templatesModal')">&times;</span>
+      <h2>Message Templates</h2>
+      <div class="templates-list">
+        <div class="template-item">
+          <h4>Assignment Reminder</h4>
+          <p>Reminder: [Assignment Name] is due on [Date]. Please submit your work on time.</p>
+          <button class="btn-small btn-use">Use Template</button>
+        </div>
+        <div class="template-item">
+          <h4>Exam Notice</h4>
+          <p>Important: [Exam Name] will be held on [Date] at [Time] in [Location].</p>
+          <button class="btn-small btn-use">Use Template</button>
+        </div>
+        <div class="template-item">
+          <h4>Class Cancellation</h4>
+          <p>Notice: [Class Name] scheduled for [Date] has been cancelled due to [Reason].</p>
+          <button class="btn-small btn-use">Use Template</button>
+        </div>
+        <div class="template-item">
+          <h4>Grade Release</h4>
+          <p>Grades for [Assignment/Exam] have been posted. Check your student portal for details.</p>
+          <button class="btn-small btn-use">Use Template</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/announcements.js"></script>
+  <script>
+    // Navigation function
+    function navigateTo(page) {
+      const pageUrls = {
+        'dashboard': 'faculty-dashboard.html',
+        'courses': 'faculty-courses.html',
+        'attendance': 'attendance.html',
+        'grades': 'grades.html',
+        'research': 'research.html',
+        'announcements': 'announcements.html',
+        'profile': 'profile.html'
+      };
+      
+      if (pageUrls[page]) {
+        window.location.href = pageUrls[page];
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        // Clear any stored session data
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Show logout message
+        alert('You have been logged out successfully!');
+        
+        // Redirect to login page
+        window.location.href = '../html/login.html';
+      }
+    }
+  </script>
+</body>
+</html>
