@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clubs & Societies</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    header {
+      background-color: #4B2E05; /* Dark Coffee Brown */
+      padding: 4px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      height: 60px;
+    }
+
+    /* Logo + University name */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      height: 36px; 
+    }
+
+    .university-name {
+      font-size: 24px;  
+      font-weight: bold;
+      font-family: "Cinzel", serif; 
+      background: linear-gradient(45deg, #D4B998, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1.5px;
+    }
+
+    /* Navbar */
+    .navbar {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar li a {
+      display: block;
+      padding: 8px 12px; 
+      color: #D4B998;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .navbar li a:hover {
+      color: #fff;
+    }
+
+    /* Dropdown (styled) */
+    .dropdown {
+      display: none;
+      position: absolute;
+      background: rgba(75, 46, 5, 0.95); /* semi-transparent brown */
+      top: 120%;
+      left: 0;
+      list-style: none;
+      min-width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .dropdown li a {
+      padding: 12px;
+      color: #D4B998;
+      border-bottom: 1px solid rgba(212, 185, 152, 0.3);
+    }
+
+    .dropdown li:last-child a {
+      border-bottom: none;
+    }
+
+    .dropdown li a:hover {
+      background: #D4B998;
+      color: #4B2E05;
+      border-radius: 6px;
+    }
+
+    /* Show dropdown on hover */
+    .navbar li:hover .dropdown {
+      display: block;
+    }
+
+  /* Fade animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    * {
+      margin: 0;
+      /* padding: 0; */
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff;
+    }
+    *:focus {
+  outline: none;
+}
+
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      background-image: url("lovable-images/hero-banner.jpg");
+      background-size: cover;
+      background-position: center;
+      top: 30px;
+      left: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(6px);
+      background-color: rgba(45, 25, 5, 0.5); /* Rich brown overlay */
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 90px 70px;
+    }
+
+    .content h1 {
+      /* font-family: 'Montserrat', sans-serif; */
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 50px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .content h1 .amp {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin: 0 5px;
+      display: inline-block;
+      transform: translateY(-2px);
+    }
+
+    .internal {
+      font-size: 21px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .sub-head{
+        font-size: 18px;
+        max-width: 800px;
+        margin: 0 auto;
+        /* line-height: 1.6; */
+        color: #4B2E05;
+    }
+
+    @media (max-width: 600px) {
+      .content h1 {
+        font-size: 28px;
+      }
+      .content h1 .amp {
+        font-size: 32px;
+      }
+      .content p {
+        font-size: 14px;
+      }
+    } 
+    /* .club-card {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}  */
+/* .club-card {
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+} */
+
+/* Sparkly hover effect */
+/* .club-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.2), 0 0 18px rgba(255, 215, 150, 0.3);
+} */
+
+/* Optional: subtle shimmer overlay */
+/* .club-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.club-card:hover::after {
+  opacity: 1;
+} */
+
+/* .club-card {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+} */
+
+/* Sparkly hover */
+/*.club-card:hover {
+   transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.2), 0 0 18px rgba(255, 215, 150, 0.3);
+}
+
+.club-card-body {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 20px;
+} */
+.club-card {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* .club-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.2), 0 0 18px rgba(255, 215, 150, 0.3);
+} */
+/* .club-card:hover {
+  transform: scale(1.03) translateY(-8px);
+  box-shadow:
+    0 16px 32px rgba(255, 255, 255, 0.2),
+    0 0 24px rgba(255, 215, 150, 0.4),
+    0 0 40px rgba(255, 215, 150, 0.2);
+} */
+ /* .club-card:hover {
+  transform: translateY(15px) scale(1.05);
+  box-shadow:
+    0 20px 40px rgba(255, 215, 150, 0.4),
+    0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+} */
+.club-card:hover{
+    transform: translateY(-6px);
+    box-shadow:
+    0 16px 32px rgba(255, 255, 255, 0.2),
+    0 0 24px rgba(255, 215, 150, 0.4),
+    0 0 40px rgba(255, 215, 150, 0.2);
+}
+.club-card-body {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  width: 100%;
+}
+
+.club-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.club-card-text {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+/* .club-card-btn {
+  background-color: #fff;
+  color: #000;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.club-card-btn:hover {
+  background-color: #ffc107;
+  color: #000;
+} */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Background images */
+/* .bg-image-1 {
+  background-image: url("lovable-images/eco-society.jpg");
+}
+
+.bg-image-2 {
+  background-image: url("lovable-images/pulse-crew.jpg");
+}
+
+.bg-image-3 {
+  background-image: url("lovable-images/velvet-circle.jpg");
+}
+
+.bg-image-4 {
+  background-image: url("lovable-images/mindspace-assembly.jpg");
+} */
+ .bg-image-1 { background-image: url('lovable-images/eco-society.jpg'); }
+.bg-image-2 { background-image: url('lovable-images/pulse-crew.jpg'); }
+.bg-image-3 { background-image: url('lovable-images/velvet-circle.jpg'); }
+.bg-image-4 { background-image: url('lovable-images/mindspace-assembly.jpg'); }
+
+/* ✅ Fix hover clipping issue */
+.row, .col-md-6 {
+  overflow: visible !important;
+}
+
+/* ✅ Stronger, clearer hover effect */
+.club-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow:
+    0 20px 40px rgba(255, 215, 150, 0.5),
+    0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Make navbar text prettier & responsive */
+.navbar-brand .university-name {
+  font-family: "Cinzel", serif;
+  font-size: 22px;
+  background: linear-gradient(45deg, #D4B998, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1.5px;
+}
+
+/* Navbar link hover */
+.navbar .nav-link:hover {
+  color: #fff !important;
+}
+
+/* Dropdown items */
+.dropdown-item {
+  color: #D4B998;
+}
+
+.dropdown-item:hover {
+  background-color: #D4B998;
+  color: #4B2E05;
+}
+
+/* Navbar background blur for nicer mobile view */
+@media (max-width: 991px) {
+  header.navbar {
+    backdrop-filter: blur(8px);
+  }
+
+  .navbar-collapse {
+    background: rgba(75, 46, 5, 0.95);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .nav-link {
+    color: #D4B998 !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+    <header>
+    <div class="logo-container">
+      <img src="LOGO-removebg-preview.png" alt="Stellan University Logo" class="logo">
+      <span class="university-name">Stellan University</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="navbar">
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">About</a>
+          <ul class="dropdown">
+            <li><a href="#">Our Vision</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">History</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Academics</a>
+          <ul class="dropdown">
+            <li><a href="#">Undergraduate</a></li>
+            <li><a href="#">Postgraduate</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Campus Life</a>
+          <ul class="dropdown">
+            <li><a href="#">Hostels</a></li>
+            <li><a href="#">Clubs</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="banner">
+    <div class="overlay"></div>
+    <div class="content" style="color: white;">
+      <h1>Clubs <span class="amp">&</span> Societies</h1>
+      <p class="internal">Discover your passion, connect with like-minded individuals, and create unforgettable memories.</p>
+    </div>
+  </div>
+  <br>
+  <div class="content">
+    <h1>Our Communities</h1>
+      <p class="sub-head">Each club offers a unique journey of growth,creativity and connection.</p>
+  </div>
+
+<!-- Club Cards Section -->
+<div class="container mt-4">
+  <div class="row">
+    <!-- Card 1 -->
+    <div class="col-md-6 mb-4">
+      <div class="club-card bg-image-1 animate-on-scroll">
+        <div class="club-card-body">
+          <h5 class="club-card-title">Echo Society</h5>
+          <p class="club-card-text">
+            Harmonize your voice with nature. Join us for melodious journeys, vocal training, and performances that resonate with the soul.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-6 mb-4">
+      <div class="club-card bg-image-2 animate-on-scroll">
+        <div class="club-card-body">
+          <h5 class="club-card-title">PULSE CREW</h5>
+          <p class="club-card-text">
+            Move to the rhythm of passion. From hip-hop to contemporary, discover your groove and express yourself through dance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Card 3 -->
+    <div class="col-md-6 mb-4">
+      <div class="club-card bg-image-3 animate-on-scroll">
+        <div class="club-card-body">
+          <h5 class="club-card-title">The Velvet Circle</h5>
+          <p class="club-card-text">
+            Experience elegance and grandeur. We curate unforgettable evenings of sophistication, dancing, and timeless memories.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-6 mb-4">
+      <div class="club-card bg-image-4 animate-on-scroll">
+        <div class="club-card-body">
+          <h5 class="club-card-title">The Mindspace Assembly</h5>
+          <p class="club-card-text">
+            Where ideas meet innovation. Connect with aspiring entrepreneurs, develop business acumen, and turn visions into ventures.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scroll Animation Script -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(card => {
+    observer.observe(card);
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-q6qH9dkkZNCZ0qzQ2OkU5D6qL2Th5iPv4x4Frjv4x+bgH4wVCSJhzR6UK3T9bxQ6" crossorigin="anonymous"></script>
+</body>
+</html>
