@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Spark Den 2025 - Stellan University</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff;
+      color: #2C1810;
+    }
+
+    /* Header Styles */
+    /* header {
+      background-color: #4B2E05;
+      padding: 4px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      height: 60px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      height: 36px;
+    }
+
+    .university-name {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: "Cinzel", serif;
+      background: linear-gradient(45deg, #D4B998, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1.5px;
+    }
+
+    .navbar {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar li a {
+      display: block;
+      padding: 8px 12px;
+      color: #D4B998;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .navbar li a:hover {
+      color: #fff;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      background: rgba(75, 46, 5, 0.95);
+      top: 120%;
+      left: 0;
+      list-style: none;
+      min-width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .dropdown li a {
+      padding: 12px;
+      color: #D4B998;
+      border-bottom: 1px solid rgba(212, 185, 152, 0.3);
+    }
+
+    .dropdown li:last-child a {
+      border-bottom: none;
+    }
+
+    .dropdown li a:hover {
+      background: #D4B998;
+      color: #4B2E05;
+      border-radius: 6px;
+    }
+
+    .navbar li:hover .dropdown {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }*/
+    header {
+      background-color: #4B2E05; /* Dark Coffee Brown */
+      padding: 4px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      height: 60px;
+    }
+
+    /* Logo + University name */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      height: 36px; 
+    }
+
+    .university-name {
+      font-size: 24px;  
+      font-weight: bold;
+      font-family: "Cinzel", serif; 
+      background: linear-gradient(45deg, #D4B998, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1.5px;
+    }
+
+    /* Navbar */
+    .navbar {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar li a {
+      display: block;
+      padding: 8px 12px; 
+      color: #D4B998;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .navbar li a:hover {
+      color: #fff;
+    }
+
+    /* Dropdown (styled) */
+    .dropdown {
+      display: none;
+      position: absolute;
+      background: rgba(75, 46, 5, 0.95); /* semi-transparent brown */
+      top: 120%;
+      left: 0;
+      list-style: none;
+      min-width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .dropdown li a {
+      padding: 12px;
+      color: #D4B998;
+      border-bottom: 1px solid rgba(212, 185, 152, 0.3);
+    }
+
+    .dropdown li:last-child a {
+      border-bottom: none;
+    }
+
+    .dropdown li a:hover {
+      background: #D4B998;
+      color: #4B2E05;
+      border-radius: 6px;
+    }
+
+    /* Show dropdown on hover */
+    .navbar li:hover .dropdown {
+      display: block;
+    }
+
+  /* Fade animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Carousel Styles */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(75, 46, 5, 0.9), rgba(75, 46, 5, 0.3));
+    }
+
+    .carousel-content {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: white;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .carousel-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #D4B998;
+    }
+
+    .carousel-content p {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(212, 185, 152, 0.2);
+      border: none;
+      color: #D4B998;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .carousel-nav:hover {
+      background: rgba(212, 185, 152, 0.4);
+    }
+
+    .carousel-nav.prev {
+      left: 20px;
+    }
+
+    .carousel-nav.next {
+      right: 20px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(212, 185, 152, 0.3);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .carousel-dot.active {
+      background: #D4B998;
+      width: 32px;
+      border-radius: 6px;
+    }
+
+    /* Countdown Timer */
+    .countdown-section {
+      padding: 64px 16px;
+      background: linear-gradient(to right, #4B2E05, #5E3C1A, #4B2E05);
+    }
+
+    .countdown-container {
+      max-width: 1152px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .countdown-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #EDD5B8;
+      margin-bottom: 16px;
+    }
+
+    .countdown-subtitle {
+      color: rgba(237, 213, 184, 0.8);
+      margin-bottom: 32px;
+      font-size: 18px;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 32px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .countdown-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+      padding: 24px;
+      border: 1px solid rgba(212, 185, 152, 0.3);
+      transition: all 0.3s;
+    }
+
+    .countdown-item:hover {
+      border-color: #D4B998;
+      transform: scale(1.05);
+    }
+
+    .countdown-number {
+      font-size: 56px;
+      font-weight: 700;
+      color: #D4B998;
+      margin-bottom: 8px;
+    }
+
+    .countdown-label {
+      color: #EDD5B8;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Event Intro */
+    .event-intro {
+      padding: 64px 16px;
+      text-align: center;
+    }
+
+    .event-intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #4B2E05;
+      margin-bottom: 24px;
+    }
+
+    .event-intro p {
+      font-size: 20px;
+      color: #5E3C1A;
+      max-width: 896px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Featured Speakers */
+    .speakers-section {
+      padding: 64px 16px;
+      background: rgba(212, 185, 152, 0.1);
+    }
+
+    .speakers-container {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+
+    .speakers-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .speakers-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #4B2E05;
+      margin-bottom: 16px;
+    }
+
+    .speakers-header p {
+      font-size: 18px;
+      color: #5E3C1A;
+      max-width: 672px;
+      margin: 0 auto;
+    }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .speaker-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s;
+    }
+
+    .speaker-card:hover {
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .speaker-image-container {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .speaker-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .speaker-card:hover .speaker-image-container img {
+      transform: scale(1.1);
+    }
+
+    .speaker-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #4B2E05, rgba(75, 46, 5, 0.5), transparent);
+      opacity: 0.6;
+    }
+
+    .speaker-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      color: white;
+    }
+
+    .speaker-name {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .speaker-title {
+      color: #EDD5B8;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .speaker-description {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .speaker-card:hover .speaker-description {
+      opacity: 1;
+    }
+
+    /* Event Schedule */
+    .schedule-section {
+      padding: 64px 16px;
+    }
+
+    .schedule-container {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+
+    .schedule-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .schedule-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #4B2E05;
+      margin-bottom: 16px;
+    }
+
+    .schedule-header p {
+      font-size: 18px;
+      color: #5E3C1A;
+    }
+
+    .schedule-day {
+      margin-bottom: 48px;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #D4B998;
+    }
+
+    .day-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #4B2E05;
+    }
+
+    .day-date {
+      color: #D4B998;
+      font-weight: 600;
+    }
+
+    .schedule-events {
+      display: grid;
+      gap: 16px;
+    }
+
+    .schedule-event {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      border-left: 4px solid #D4B998;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+    }
+
+    .schedule-event:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: translateX(4px);
+    }
+
+    .event-time {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: #4B2E05;
+    }
+
+    .event-details h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #4B2E05;
+      margin-bottom: 8px;
+    }
+
+    .event-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #5E3C1A;
+      font-size: 14px;
+    }
+
+    /* Registration CTA */
+    .cta-section {
+      padding: 64px 16px;
+      background: linear-gradient(to bottom right, #4B2E05, #5E3C1A, #4B2E05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-decorative {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+    }
+
+    .cta-circle-1 {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      width: 128px;
+      height: 128px;
+      border: 2px solid #D4B998;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .cta-circle-2 {
+      position: absolute;
+      bottom: 80px;
+      right: 80px;
+      width: 192px;
+      height: 192px;
+      border: 2px solid #EDD5B8;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      animation-delay: 1s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+
+    .cta-container {
+      max-width: 896px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      animation: pulse 2s infinite;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 24px;
+    }
+
+    .cta-subtitle {
+      font-size: 20px;
+      color: rgba(237, 213, 184, 0.9);
+      margin-bottom: 32px;
+      max-width: 672px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .cta-highlight {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* .cta-highlight svg {
+      width: 32px;
+      height: 32px;
+      color: #EDD5B8;
+    } */
+     .cta-highlight img {
+      width: 32px;
+      height: 32px;
+      color: #EDD5B8;
+    }
+
+    .cta-highlight span {
+      color: #EDD5B8;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cta-status {
+      color: #EDD5B8;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-content h2 {
+        font-size: 36px;
+      }
+
+      .countdown-title,
+      .speakers-header h2,
+      .schedule-header h2 {
+        font-size: 36px;
+      }
+
+      .cta-title {
+        font-size: 40px;
+      }
+
+      .schedule-event {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="LOGO-removebg-preview.png" alt="Stellan University Logo" class="logo">
+      <span class="university-name">Stellan University</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="navbar">
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">About</a>
+          <ul class="dropdown">
+            <li><a href="#">Our Vision</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">History</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Academics</a>
+          <ul class="dropdown">
+            <li><a href="#">Undergraduate</a></li>
+            <li><a href="#">Postgraduate</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Campus Life</a>
+          <ul class="dropdown">
+            <li><a href="#">Hostels</a></li>
+            <li><a href="#">Clubs</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Carousel -->
+  <div class="carousel-container">
+    <div class="carousel-wrapper" id="carouselWrapper">
+      <div class="carousel-slide">
+        <img src="lovable-images/event-hero-1.jpg" alt="The Spark Den 2025">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <h2>The Spark Den 2025</h2>
+          <p>Where Innovation Meets Opportunity</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="lovable-images/event-hero-2.jpg" alt="Keynote Sessions">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <h2>Inspiring Keynote Sessions</h2>
+          <p>Learn from Industry Leaders and Successful Entrepreneurs</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="lovable-images/event-hero-3.jpg" alt="Networking">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <h2>Network & Collaborate</h2>
+          <p>Connect with Founders, Investors, and Fellow Innovators</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-nav prev" onclick="prevSlide()">‹</button>
+    <button class="carousel-nav next" onclick="nextSlide()">›</button>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+
+  <!-- Countdown Timer -->
+  <div class="countdown-section">
+    <div class="countdown-container">
+      <h2 class="countdown-title">Event Starts In</h2>
+      <p class="countdown-subtitle">November 15-17, 2025 | Stellan University</p>
+      
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Intro -->
+  <div class="event-intro">
+    <h2>Welcome to The Spark Den 2025</h2>
+    <p>
+      Stellan University's flagship entrepreneurship event brings together students, founders, investors, 
+      and industry leaders for three days of innovation, inspiration, and collaboration. 
+      Experience keynote sessions, startup showcases, pitch competitions, and unparalleled networking opportunities.
+    </p>
+  </div>
+
+  <!-- Featured Speakers -->
+  <div class="speakers-section">
+    <div class="speakers-container">
+      <div class="speakers-header">
+        <h2>Featured Speakers</h2>
+        <p>Learn from industry leaders and successful entrepreneurs who have built remarkable ventures</p>
+      </div>
+
+      <div class="speakers-grid">
+        <div class="speaker-card">
+          <div class="speaker-image-container">
+            <img src="lovable-images/speaker-1.jpg" alt="Dr. Sarah Mitchell">
+            <div class="speaker-gradient"></div>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Dr. Sarah Mitchell</h3>
+            <p class="speaker-title">CEO, TechVentures Inc.</p>
+            <p class="speaker-description">Pioneer in AI-driven healthcare solutions with 15+ years experience</p>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image-container">
+            <img src="lovable-images/speaker-2.jpg" alt="Rajesh Kapoor">
+            <div class="speaker-gradient"></div>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Rajesh Kapoor</h3>
+            <p class="speaker-title">Managing Partner, Ignite Ventures</p>
+            <p class="speaker-description">Leading venture capitalist investing in early-stage startups</p>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image-container">
+            <img src="lovable-images/speaker-3.jpg" alt="Michael Chen">
+            <div class="speaker-gradient"></div>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Michael Chen</h3>
+            <p class="speaker-title">Founder, EcoTech Solutions</p>
+            <p class="speaker-description">Award-winning entrepreneur in sustainable technology</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Schedule -->
+  <div class="schedule-section">
+    <div class="schedule-container">
+      <div class="schedule-header">
+        <h2>Event Schedule</h2>
+        <p>Three days packed with inspiring sessions, networking, and innovation</p>
+      </div>
+
+      <!-- Day 1 -->
+      <div class="schedule-day">
+        <div class="day-header">
+          <h3>Day 1</h3>
+          <span class="day-date">November 15, 2025</span>
+        </div>
+        <div class="schedule-events">
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>09:00 AM</span>
+            </div>
+            <div class="event-details">
+              <h4>Registration & Welcome Coffee</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Main Auditorium Lobby</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>10:00 AM</span>
+            </div>
+            <div class="event-details">
+              <h4>Opening Keynote - The Future of Innovation</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Main Auditorium</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>11:30 AM</span>
+            </div>
+            <div class="event-details">
+              <h4>Panel Discussion - Building Successful Startups</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Conference Hall A</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>01:00 PM</span>
+            </div>
+            <div class="event-details">
+              <h4>Networking Lunch</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>University Dining Hall</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>02:30 PM</span>
+            </div>
+            <div class="event-details">
+              <h4>Startup Showcase & Demo Sessions</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Exhibition Hall</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>05:00 PM</span>
+            </div>
+            <div class="event-details">
+              <h4>Evening Networking Reception</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Sky Lounge</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="schedule-day">
+        <div class="day-header">
+          <h3>Day 2</h3>
+          <span class="day-date">November 16, 2025</span>
+        </div>
+        <div class="schedule-events">
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>09:30 AM</span>
+            </div>
+            <div class="event-details">
+              <h4>Workshop - Funding Your Startup</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Workshop Room 1</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>11:00 AM</span>
+            </div>
+            <div class="event-details">
+              <h4>Investor Pitch Sessions (Qualifiers)</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Conference Hall B</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>01:00 PM</span>
+            </div>
+            <div class="event-details">
+              <h4>Lunch & Mentorship Sessions</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Mentorship Lounge</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>03:00 PM</span>
+            </div>
+            <div class="event-details">
+              <h4>Tech Talk - AI & Machine Learning in Business</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Main Auditorium</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>05:00 PM</span>
+            </div>
+            <div class="event-details">
+              <h4>Startup Fair & Networking</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Exhibition Hall</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="schedule-day">
+        <div class="day-header">
+          <h3>Day 3</h3>
+          <span class="day-date">November 17, 2025</span>
+        </div>
+        <div class="schedule-events">
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>10:00 AM</span>
+            </div>
+            <div class="event-details">
+              <h4>Final Pitch Competition</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Main Auditorium</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>12:30 PM</span>
+            </div>
+            <div class="event-details">
+              <h4>Award Ceremony & Closing Remarks</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Main Auditorium</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-event">
+            <div class="event-time">
+              <span>🕐</span>
+              <span>02:00 PM</span>
+            </div>
+            <div class="event-details">
+              <h4>Celebration Lunch & Networking</h4>
+              <div class="event-location">
+                <span>📍</span>
+                <span>Grand Banquet Hall</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Registration CTA -->
+  <div class="cta-section">
+    <div class="cta-decorative">
+      <div class="cta-circle-1"></div>
+      <div class="cta-circle-2"></div>
+    </div>
+
+    <div class="cta-container">
+      <svg class="cta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: #D4B998;">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+      </svg>
+      
+      <h2 class="cta-title">Ready to Ignite Your Journey?</h2>
+      
+      <p class="cta-subtitle">
+        Join 500+ aspiring entrepreneurs, meet industry leaders, and transform your startup dreams into reality
+      </p>
+
+      <div class="cta-highlights">
+        <div class="cta-highlight">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg> -->
+          <img src="icons/people (1).png">
+          <span>Network with 500+ Attendees</span>
+        </div>
+
+        <div class="cta-highlight">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg> -->
+          <img src="icons/verify.png">
+          <span>₹5 Lakh Prize Pool</span>
+        </div>
+
+        <div class="cta-highlight">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg> -->
+          <img src="icons/bolt.png">
+          <span>Pitch to Top Investors</span>
+        </div>
+      </div>
+
+      <p class="cta-status">Registration opening soon • Stay tuned for updates</p>
+    </div>
+  </div>
+
+  <script>
+    // Carousel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const wrapper = document.getElementById('carouselWrapper');
+    const dotsContainer = document.getElementById('carouselDots');
+
+    // Create dots
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot';
+      if (index === 0) dot.classList.add('active');
+      dot.onclick = () => goToSlide(index);
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    function updateCarousel() {
+      wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    // Auto-play carousel
+    setInterval(nextSlide, 5000);
+
+    // Countdown Timer
+    const eventDate = new Date("2025-11-15T09:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = eventDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / 1000 / 60) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      } else {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
