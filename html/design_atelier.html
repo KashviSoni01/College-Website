@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clubs & Societies</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    header {
+      background-color: #4B2E05; /* Dark Coffee Brown */
+      padding: 4px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      height: 60px;
+    }
+
+    /* Logo + University name */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      height: 36px; 
+    }
+
+    .university-name {
+      font-size: 24px;  
+      font-weight: bold;
+      font-family: "Cinzel", serif; 
+      background: linear-gradient(45deg, #D4B998, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1.5px;
+    }
+
+    /* Navbar */
+    .navbar {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar li a {
+      display: block;
+      padding: 8px 12px; 
+      color: #D4B998;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .navbar li a:hover {
+      color: #fff;
+    }
+
+    /* Dropdown (styled) */
+    .dropdown {
+      display: none;
+      position: absolute;
+      background: rgba(75, 46, 5, 0.95); /* semi-transparent brown */
+      top: 120%;
+      left: 0;
+      list-style: none;
+      min-width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .dropdown li a {
+      padding: 12px;
+      color: #D4B998;
+      border-bottom: 1px solid rgba(212, 185, 152, 0.3);
+    }
+
+    .dropdown li:last-child a {
+      border-bottom: none;
+    }
+
+    .dropdown li a:hover {
+      background: #D4B998;
+      color: #4B2E05;
+      border-radius: 6px;
+    }
+
+    /* Show dropdown on hover */
+    .navbar li:hover .dropdown {
+      display: block;
+    }
+
+  /* Fade animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    * {
+      margin: 0;
+      /* padding: 0; */
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff;
+    }
+    *:focus {
+  outline: none;
+}
+
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      background-image: url("design/design-hero.jpg");
+      background-size: cover;
+      background-position: center;
+      top: 60px;
+      left: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(0.5px);
+      background-color: rgba(94, 60, 26, 0.5); /* Rich brown overlay */
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 165px 70px;
+    }
+
+    .content h1 {
+      /* font-family: 'Montserrat', sans-serif; */
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 70px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .sign-amp {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      margin: 0 5px;
+      display: inline-block;
+      transform: translateY(-2px);
+    }
+    .content2{
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 70px 30px;
+    }
+
+    .content2 h1 {
+      
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 55px;
+      font-weight: 700;
+    }
+    .internal {
+      font-size: 21px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .sub-head{
+        font-size: 20px;
+        max-width: 940px;
+        margin: 0 auto;
+        /* line-height: 1.6; */
+        color: #4B2E05;
+    }
+    
+
+
+    @media (max-width: 600px) {
+      .content h1 {
+        font-size: 28px;
+      }
+      .content h1 .amp {
+        font-size: 32px;
+      }
+      .content p {
+        font-size: 14px;
+      }
+    }
+
+.carousel-item img {
+  max-height: 400px; /* Adjust as needed */
+  object-fit: cover;
+}
+.flex-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .card-title {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  .carousel-control-prev,
+.carousel-control-next {
+  z-index: 2; /* Above carousel items, below banner */
+}
+.feature-card {
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
+  text-align:left;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Image hover effect */
+.feature-card:hover .feature-img {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.feature-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  /* border-radius: 50% */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-items: flex-start;
+}
+.cta-button {
+  display: inline-block;
+  background-color: #5e3c1a; /* Rich brown */
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #7a4a20; /* Slightly lighter brown */
+  box-shadow: 0 6px 18px rgba(94, 60, 26, 0.4);
+  transform: translateY(-2px);
+}
+
+  </style>
+</head>
+<body>
+    <header>
+    <div class="logo-container">
+      <img src="LOGO-removebg-preview.png" alt="Stellan University Logo" class="logo">
+      <span class="university-name">Stellan University</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="navbar">
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">About</a>
+          <ul class="dropdown">
+            <li><a href="#">Our Vision</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">History</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Academics</a>
+          <ul class="dropdown">
+            <li><a href="#">Undergraduate</a></li>
+            <li><a href="#">Postgraduate</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Campus Life</a>
+          <ul class="dropdown">
+            <li><a href="#">Hostels</a></li>
+            <li><a href="#">Clubs</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="banner">
+    <div class="overlay"></div>
+    <div class="content" style="color: white;">
+      <h1>Design Atelier</h1>
+      <p class="internal">Where creativity meets excellence</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="content2">
+    <h1>Our Designn Activities</h1>
+  </div>
+<div class="container py-4">
+  <div id="multiCardCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/3d-modeling.jpg" class="card-img-top" alt="Basketball" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">3D-modelling</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/branding.jpg" class="card-img-top" alt="Soccer" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Branding</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/digital-art.jpg" class="card-img-top" alt="Volleyball" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Digital Art</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/graphic-design.jpg" class="card-img-top" alt="Cooking Classes" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Graphic Design</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/illustration.jpg" class="card-img-top" alt="Recipe Development" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Illustration</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/motion-graphics.jpg" class="card-img-top" alt="Collaborative Cooking" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Motion Graphics</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/photography.jpg" class="card-img-top" alt="Culinary Competitions" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Photography</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/print-design.jpg" class="card-img-top" alt="Singing Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Print Design</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/product-design.jpg" class="card-img-top" alt="Dance Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Product Design</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/typography.jpg" class="card-img-top" alt="Art Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Typography</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/uiux-design.jpg" class="card-img-top" alt="Drama Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">UI/UX Design</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="design/web-design.jpg" class="card-img-top" alt="Innovation Lab" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Website Design</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#multiCardCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#multiCardCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class="content2">
+    <h1>Why Join Design Atelier?</h1>
+</div>
+<div class="container py-5">
+  <div class="row g-4 text-center">
+    <!-- Card 1 -->
+    <div class="col-md-4">
+      <div class="feature-card p-4 shadow-sm rounded">
+        <img src="icons/pallete.png" alt="Creative Freedom" class="feature-img mb-3">
+        <h5 class="fw-bold">Creative Freedom</h5>
+        <p>Express yourself through diverse design disciplines and experimental projects</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-4">
+      <div class="feature-card p-4 shadow-sm rounded">
+        <img src="icons/people.png" alt="Collaborative Community" class="feature-img mb-3">
+        <h5 class="fw-bold">Collaborative Community</h5>
+        <p>Connect with fellow designers, share ideas, and work on exciting projects</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-4">
+      <div class="feature-card p-4 shadow-sm rounded">
+        <img src="icons/light-bulb.png" alt="Skill Development" class="feature-img mb-3">
+        <h5 class="fw-bold">Skill Development</h5>
+        <p>Learn from workshops, masterclasses, and hands-on design challenges</p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-4">
+      <div class="feature-card p-4 shadow-sm rounded">
+        <img src="icons/trophy (1).png" alt="Design Competitions" class="feature-img mb-3">
+        <h5 class="fw-bold">Design Competitions</h5>
+        <p>Showcase your talent in inter-university competitions and design contests</p>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-md-4">
+      <div class="feature-card p-4 shadow-sm rounded">
+        <img src="icons/briefcase.png" alt="Portfolio Building" class="feature-img mb-3">
+        <h5 class="fw-bold">Portfolio Building</h5>
+        <p>Create stunning portfolio pieces through real-world client projects</p>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-md-4">
+      <div class="feature-card p-4 shadow-sm rounded">
+        <img src="icons/star (1).png" alt="Industry Exposure" class="feature-img mb-3">
+        <h5 class="fw-bold">Industry Exposure</h5>
+        <p>Network with design professionals and explore career opportunities</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center my-5">
+  <a href="#join" class="cta-button">Join Design Atelier Today</a>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
