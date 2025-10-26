@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clubs & Societies</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    header {
+      background-color: #4B2E05; /* Dark Coffee Brown */
+      padding: 4px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      height: 60px;
+    }
+
+    /* Logo + University name */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      height: 36px; 
+    }
+
+    .university-name {
+      font-size: 24px;  
+      font-weight: bold;
+      font-family: "Cinzel", serif; 
+      background: linear-gradient(45deg, #D4B998, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1.5px;
+    }
+
+    /* Navbar */
+    .navbar {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar li a {
+      display: block;
+      padding: 8px 12px; 
+      color: #D4B998;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .navbar li a:hover {
+      color: #fff;
+    }
+
+    /* Dropdown (styled) */
+    .dropdown {
+      display: none;
+      position: absolute;
+      background: rgba(75, 46, 5, 0.95); /* semi-transparent brown */
+      top: 120%;
+      left: 0;
+      list-style: none;
+      min-width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .dropdown li a {
+      padding: 12px;
+      color: #D4B998;
+      border-bottom: 1px solid rgba(212, 185, 152, 0.3);
+    }
+
+    .dropdown li:last-child a {
+      border-bottom: none;
+    }
+
+    .dropdown li a:hover {
+      background: #D4B998;
+      color: #4B2E05;
+      border-radius: 6px;
+    }
+
+    /* Show dropdown on hover */
+    .navbar li:hover .dropdown {
+      display: block;
+    }
+
+  /* Fade animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    * {
+      margin: 0;
+      /* padding: 0; */
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff;
+    }
+    *:focus {
+  outline: none;
+}
+
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      background-image: url("lovable-images/sports-hero.jpg");
+      background-size: cover;
+      background-position: center;
+      top: 60px;
+      left: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(0.5px);
+      background-color: rgba(94, 60, 26, 0.5); /* Rich brown overlay */
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 165px 70px;
+    }
+
+    .content h1 {
+      /* font-family: 'Montserrat', sans-serif; */
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 70px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .sign-amp {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      margin: 0 5px;
+      display: inline-block;
+      transform: translateY(-2px);
+    }
+    .content2{
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 80px 70px;
+    }
+
+    .content2 h1 {
+      /* font-family: 'Montserrat', sans-serif; */
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 55px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .internal {
+      font-size: 21px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .sub-head{
+        font-size: 20px;
+        max-width: 940px;
+        margin: 0 auto;
+        /* line-height: 1.6; */
+        color: #4B2E05;
+    }
+    
+
+
+    @media (max-width: 600px) {
+      .content h1 {
+        font-size: 28px;
+      }
+      .content h1 .amp {
+        font-size: 32px;
+      }
+      .content p {
+        font-size: 14px;
+      }
+    }
+
+.carousel-item img {
+  max-height: 400px; /* Adjust as needed */
+  object-fit: cover;
+}
+.flex-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .icon-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #d4c1b4; /* Warm brown */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-circle img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+  .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .card-title {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  .card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow:
+    0 16px 32px rgba(255, 255, 255, 0.2),
+    0 0 24px rgba(255, 215, 150, 0.4),
+    0 0 40px rgba(255, 215, 150, 0.2);
+}
+
+  </style>
+</head>
+<body>
+    <header>
+    <div class="logo-container">
+      <img src="LOGO-removebg-preview.png" alt="Stellan University Logo" class="logo">
+      <span class="university-name">Stellan University</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="navbar">
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">About</a>
+          <ul class="dropdown">
+            <li><a href="#">Our Vision</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">History</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Academics</a>
+          <ul class="dropdown">
+            <li><a href="#">Undergraduate</a></li>
+            <li><a href="#">Postgraduate</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Campus Life</a>
+          <ul class="dropdown">
+            <li><a href="#">Hostels</a></li>
+            <li><a href="#">Clubs</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="banner">
+    <div class="overlay"></div>
+    <div class="content" style="color: white;">
+      <h1>Campus Sports</h1>
+      <p class="internal">Where athletic excellence meets community spirit</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="content2">
+    <h1>Our Sports Activities</h1>
+  </div>
+<div class="container py-4">
+  <div id="multiCardCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/sports-basketball.jpg" class="card-img-top" alt="Basketball" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Basketball</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/sports-soccer.jpg" class="card-img-top" alt="Soccer" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Soccer</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/sports-volleyball.jpg" class="card-img-top" alt="Volleyball" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Volleyball</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/sports-swimming.jpg" class="card-img-top" alt="Cooking Classes" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Swimming</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/skateboarding.jpg" class="card-img-top" alt="Recipe Development" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Skateboarding</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/squash.jpg" class="card-img-top" alt="Collaborative Cooking" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Squash</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/wrestling.jpg" class="card-img-top" alt="Culinary Competitions" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Wrestling</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/gym.jpg" class="card-img-top" alt="Singing Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Gym</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/frisbee.jpg" class="card-img-top" alt="Dance Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Frisbee</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/martial-arts.jpg" class="card-img-top" alt="Art Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Martial Arts</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/esports.jpg" class="card-img-top" alt="Drama Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">E-sports</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/fieldhockey.jpg" class="card-img-top" alt="Innovation Lab" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Field Hockey</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/fencing.jpg" class="card-img-top" alt="Eco Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Fencing</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/baseball.jpg" class="card-img-top" alt="Tech Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Baseball</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow rounded">
+              <img src="sports/boxing.jpg" class="card-img-top" alt="Robotics Club" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Boxing</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#multiCardCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#multiCardCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class="container my-5">
+   <div class="content2"><h1 class="text-center text-muted mb-5">Specialized Programs</h1></div>
+  
+
+  <div class="row">
+    <!-- Martial Arts Card -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow rounded">
+        <img src="sports/martialarts.jpg" class="card-img-top" alt="Martial Arts">
+        <div class="card-body">
+          <div class="flex-title mb-3">
+            <div class="icon-circle">
+              <img src="icons/swords.png" alt="Martial Icon">
+            </div>
+            <h5 class="card-title">Martial Arts</h5>
+          </div>
+          <p class="card-text">
+            Master discipline and self-defense through various martial arts including Karate, Taekwondo, Judo, and more. Learn from experienced instructors and compete in tournaments.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+     <!-- Yoga, Gym & Meditation Card -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow rounded">
+        <img src="sports/yoga-gym (1).jpg" class="card-img-top" alt="Yoga, Gym & Meditation">
+        <div class="card-body">
+          <div class="flex-title mb-3">
+            <div class="icon-circle">
+              <img src="icons/heart (1).png" alt="Yoga Icon">
+            </div>
+            <h5 class="card-title">Yoga, Gym & Meditation</h5>
+          </div>
+          <p class="card-text">
+            Enhance your balance with yoga sessions, state-of-the-art gym facilities, and guided meditation classes. Perfect for fitness enthusiasts and those seeking inner peace.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+    <!-- E-Sports Card -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow rounded">
+        <img src="sports/esports.jpg" class="card-img-top" alt="E-Sports">
+        <div class="card-body">
+          <div class="flex-title mb-3">
+            <div class="icon-circle">
+              <img src="icons/console.png" alt="E-Sports Icon">
+            </div>
+            <h5 class="card-title">E-Sports</h5>
+          </div>
+          <p class="card-text">
+            Join the digital arena with competitive gaming tournaments, team practice sessions, and league participation. Unleash the best tech-savvy talents.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content2">
+    <h1>Ready to Get Active?</h1>
+    <p class="sub-head">Join our sports community and discover your passion for fitness, competition, and teamwork.</p>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
