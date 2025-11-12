@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+      header {
+      background-color: #4B2E05; /* Dark Coffee Brown */
+      padding: 4px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      height: 60px;
+    }
+
+    /* Logo + University name */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      height: 36px; 
+    }
+
+    .university-name {
+      font-size: 24px;  
+      font-weight: bold;
+      font-family: "Cinzel", serif; 
+      background: linear-gradient(45deg, #D4B998, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1.5px;
+    }
+
+    /* Navbar */
+    .navbar {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar li a {
+      display: block;
+      padding: 8px 12px; 
+      color: #D4B998;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .navbar li a:hover {
+      color: #fff;
+    }
+
+    /* Dropdown (styled) */
+    .dropdown {
+      display: none;
+      position: absolute;
+      background: rgba(75, 46, 5, 0.95); /* semi-transparent brown */
+      top: 120%;
+      left: 0;
+      list-style: none;
+      min-width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .dropdown li a {
+      padding: 12px;
+      color: #D4B998;
+      border-bottom: 1px solid rgba(212, 185, 152, 0.3);
+    }
+
+    .dropdown li:last-child a {
+      border-bottom: none;
+    }
+
+    .dropdown li a:hover {
+      background: #D4B998;
+      color: #4B2E05;
+      border-radius: 6px;
+    }
+
+    /* Show dropdown on hover */
+    .navbar li:hover .dropdown {
+      display: block;
+    }
+
+  /* Fade animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .hero {
+      position: relative;
+      height: 90vh;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+
+    /* Overlay Text */
+    .hero-text {
+      position: absolute;
+      top: 30%;
+      left: 8%;
+      color: #fff;
+      max-width: 700px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .hero-text h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+    }
+    .mission-section {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s ease;
+    }
+
+    .mission-section.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Footer Base */
+    .footer {
+      background: #2c1e1a; /* Deep brown */
+      color: #f1f1f1;
+      padding: 50px 20px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      margin-top: 60px;  /*Adds space above the footer */
+    }
+
+
+    /* Container */
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* About Section */
+    .footer-logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #e6b17e; /* Highlighted brown-gold */
+      margin-bottom: 10px;
+    }
+
+    .footer-about p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    /* Links */
+    .footer-links h3,
+    .footer-contact h3 {
+      margin-bottom: 15px;
+      color: #e6b17e;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin: 8px 0;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #f1f1f1;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #e6b17e;
+    }
+
+    /* Contact */
+    .footer-contact p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    /* Social Icons */
+    .social-icons a {
+      display: inline-block;
+      margin: 0 8px;
+      color: #f1f1f1;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #e6b17e;
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 15px;
+      font-size: 13px;
+      color: #aaa;
+    }
+    .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: scale(1.05) translateY(-6px);
+  box-shadow:
+    0 16px 32px rgba(255, 255, 255, 0.2),
+    0 0 24px rgba(255, 215, 150, 0.4),
+    0 0 40px rgba(255, 215, 150, 0.2);
+}
+
+.card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.02);
+}
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+}
+.card-title{
+  color: #4B2E05;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="LOGO-removebg-preview.png" alt="Stellan University Logo" class="logo">
+      <span class="university-name">Stellan University</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="navbar">
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">About</a>
+          <ul class="dropdown">
+            <li><a href="#">Our Vision</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">History</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Academics</a>
+          <ul class="dropdown">
+            <li><a href="#">Undergraduate</a></li>
+            <li><a href="#">Postgraduate</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Campus Life</a>
+          <ul class="dropdown">
+            <li><a href="#">Hostels</a></li>
+            <li><a href="#">Clubs</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="hero">
+    <video autoplay muted loop class="background-video">
+      <source src="1476204_People_4096x2160.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay Text -->
+    <div class="hero-text">
+      <p style="font-weight: bold; font-size: 2.2rem;">At Stellan, the campus isn't just a place — it's a feeling.</p>
+      <p>The rustle of leaves between buildings, the laughter echoing from common rooms, the quiet hum of ambition in every hallway</p><p>Here, students don't just chase degrees — they build friendships, spark ideas, and shape their futures one moment at a time</p>
+    </div>
+  </section>
+  <br>
+  <section class="mission-section">
+  <h1 style="font-size: 2rem; color: #4B2E05; margin-left:50px;font-size: 2rem;">Our Mission</h1>
+  <div style="display: flex;gap: 100px; padding: 40px;align-items: center;">
+    <div class="mission-text">
+      <p style="font-size: 1.2rem;">At Stellan University, we are dedicated to cultivating a transformative learning environment where knowledge meets purpose. Our mission is to empower students through rigorous academics, interdisciplinary exploration, and hands-on innovation. We believe education should ignite curiosity, challenge assumptions, and prepare students not only for careers, but for meaningful lives of impact and leadership. With a commitment to integrity, inclusivity, and intellectual growth, we foster a culture where ideas flourish and every voice matters.</p>
+      <p style="font-size: 1.2rem;">
+      Beyond the classroom, Stellan is a place where community thrives. From creative studios to robotics labs, wellness circles to cultural festivals, our campus pulses with energy, collaboration, and discovery. We celebrate the full spectrum of student life — encouraging exploration, self-expression, and connection. Here, students build memories, shape their futures, and become part of something larger than themselves. At Stellan, learning is not confined to lecture halls — it's lived, shared, and felt in every corner of campus.</p>
+    </div>
+    <div class="mission-image">
+      <img src="story.jpg" width="450px" height="400px" style="margin: auto;">
+    </div>
+  </div>
+  </section>
+  <h1 style="font-size: 2rem; color: #4B2E05; margin-left:50px;">Beyond Classes, Beyond Books</h1>
+  <br>
+<div class="container mt-4">
+  <div class="row">
+    <!-- Card 1 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="clubandsocieties.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="lovable-images/clubs-societies.jpg" class="card-img-top" alt="Quiet Study">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Clubs and Societies</h5>
+          <p class="card-text">Fueled by passion, united by purpose — our clubs and societies turn interests into lifelong connections</p>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="engineering_soc.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="lovable-images/engineering-society.jpg" class="card-img-top" alt="Group Study">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Engineering Society</h5>
+          <p class="card-text">Driven by curiosity, powered by collaboration — the Engineering Society is where ideas evolve into real-world solutions.</p>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="sports-new.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="lovable-images/sports-hero.jpg" class="card-img-top" alt="Peer Tutoring">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Sports and Fitness</h5>
+          <p class="card-text">Fueled by discipline, elevated by teamwork — our sports and fitness programs build strength, spirit, and resilience</p>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="flavor-lab-new.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="lovable-images/flavor-lab-hero.jpg" class="card-img-top" alt="Academic Workshops">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Flavor Lab</h5>
+          <p class="card-text">Inspired by tradition, refined through experimentation — Flavour Lab is where culinary craft becomes creative expression</p>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="vibe_central.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="lovable-images/vibe-central-hero.jpg" class="card-img-top" alt="Tech Lab">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Vibe Central</h5>
+          <p class="card-text">Rooted in joy, enriched by experience — our entertainment and recreation spaces spark connection, creativity, and campus spirit</p>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="design_atelier.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="design/design-hero.jpg" class="card-img-top" alt="Creative Corner">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Design Atelier</h5>
+          <p class="card-text">Guided by vision, shaped through craft — The Design Atelier is where ideas take form and stories find style</p>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="study_lounge.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="lovable-images/study-lounge-hero.jpg" class="card-img-top" alt="Sports Lounge">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Study Lounge</h5>
+          <p class="card-text">Driven by focus, enriched by curiosity — The Study Lounge is where ideas grow and minds recharge.</p>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="founders_forge.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="lovable-images/founders-forge-hero.jpg" class="card-img-top" alt="Club Showcase">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">The Founders' Forge</h5>
+          <p class="card-text">Fueled by vision, sharpened through action — The Founders' Forge is where bold ideas become ventures that shape the future</p>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="col-12 col-md-4 mb-4">
+      <a href="spark_den.html" target="_blank" class="text-decoration-none">
+      <div class="card animate-on-scroll">
+        <div class="card-img-wrapper">
+          <img src="lovable-images/event-hero-1.jpg" class="card-img-top" alt="Engineering Hub">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">The Spark Den</h5>
+          <p class="card-text">Ignited by creativity, fueled by connection — The Spark Den is where fun, expression, and campus energy collide.</p>
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+  <footer id="contact" class="footer">
+
+  <div class="footer-container">
+    <!-- Left Column: Logo & About -->
+    <div class="footer-about">
+      <h2 class="footer-logo">Stellan University</h2>
+      <p>
+        Empowering students through education, innovation, and excellence.  
+        Our mission is to shape the leaders of tomorrow.
+      </p>
+    </div>
+
+    <!-- Middle Column: Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Admissions</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#">Research</a></li>
+        <li><a href="#">Campus Life</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Column: Contact & Social -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>📍 123 University Road, City, Country</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ info@university.edu</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 University Name. All rights reserved.</p>
+  </div>
+  </footer>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Animate mission section
+    const mission = document.querySelector('.mission-section');
+    if (mission) {
+      const missionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            missionObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      missionObserver.observe(mission);
+    }
+
+    // Animate club and society cards
+    const clubCards = document.querySelectorAll('.card');
+    const clubObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          clubObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    clubCards.forEach(card => clubObserver.observe(card));
+
+    // Animate all generic scroll elements
+    const animatedItems = document.querySelectorAll('.animate-on-scroll');
+    const generalObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          generalObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    animatedItems.forEach(item => generalObserver.observe(item));
+  });
+</script>
+</body>
+</html>

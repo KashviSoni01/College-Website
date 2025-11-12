@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Stellan University</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init({
+        publicKey:"fE1sZBhWRsUUzBkQM",
+      });
+    })();
+  </script>
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header (identical to Home) -->
+  <header>
+    <a href="home.html" class="logo-container" style="text-decoration:none;color:inherit">
+      <img src="../media/logo.png" alt="Stellan University Logo" class="logo">
+      <span class="university-name">Stellan University</span>
+    </a>
+    <nav>
+      <ul class="navbar">
+        <li><a href="home.html">Home</a></li>
+        <li>
+          <a href="#">About Us</a>
+          <ul class="dropdown">
+            <li><a href="home.html#program">Programs</a></li>
+            <li><a href="test.html">Campus Life</a></li>
+            <li><a href="research.html">Research</a></li>
+          </ul>
+        </li>
+        <li><a href="library.html">Library</a></li>
+        <li>
+          <a href="#">Portal</a>
+          <ul class="dropdown">
+            <li><a href="student-portal.html">Student Portal</a></li>
+            <li><a href="faculty-portal.html">Faculty Portal</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact Hero Section -->
+  <section class="contact-hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-star"></i>
+          <span>Connect With Us</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="title-line">Let's Start</span>
+          <span class="title-line highlight">Something Amazing</span>
+          <span class="title-line">Together</span>
+        </h1>
+        <p class="hero-subtitle">Ready to transform your future? Get in touch with Stellan University today and discover endless possibilities.</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Support</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Students Helped</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Information Section -->
+  <section class="contact-info-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="header-badge">
+          <i class="fas fa-rocket"></i>
+          <span>Interactive Contact</span>
+        </div>
+        <h2 class="section-title">
+          <span class="title-word">Get</span>
+          <span class="title-word highlight">Connected</span>
+          <span class="title-word">Instantly</span>
+        </h2>
+        <p class="section-subtitle">Experience the future of university communication with our advanced contact system</p>
+        <div class="header-features">
+          <div class="feature-tag">
+            <i class="fas fa-bolt"></i>
+            <span>Instant Response</span>
+          </div>
+          <div class="feature-tag">
+            <i class="fas fa-shield-alt"></i>
+            <span>Secure & Private</span>
+          </div>
+          <div class="feature-tag">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Mobile Friendly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+          <div class="form-header">
+            <div class="form-icon">
+              <i class="fas fa-paper-plane"></i>
+            </div>
+            <h3>Send us a Message</h3>
+            <p>Fill out the form below and we'll get back to you as soon as possible</p>
+            <div class="form-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" id="formProgress"></div>
+              </div>
+              <span class="progress-text">Form Progress: <span id="progressPercent">0%</span></span>
+            </div>
+          </div>
+          
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="input-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="input-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <i class="fas fa-user"></i>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="input-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+                <i class="fas fa-phone"></i>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="subject">Subject *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a subject</option>
+                <option value="admissions">Admissions Inquiry</option>
+                <option value="academic">Academic Information</option>
+                <option value="financial">Financial Aid</option>
+                <option value="campus">Campus Life</option>
+                <option value="library">Library Services</option>
+                <option value="student-portal">Student Portal</option>
+                <option value="general">General Inquiry</option>
+                <option value="complaint">Complaint</option>
+                <option value="suggestion">Suggestion</option>
+              </select>
+              <i class="fas fa-list"></i>
+            </div>
+
+            <div class="input-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" rows="6" required placeholder="Please describe your inquiry in detail..."></textarea>
+              <i class="fas fa-comment"></i>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </button>
+              <button type="reset" class="reset-btn">
+                <i class="fas fa-undo"></i>
+                Reset Form
+              </button>
+            </div>
+
+            <div id="formMessage" class="form-message"></div>
+          </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-details">
+          <div class="contact-card">
+            <div class="card-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="card-content">
+              <h4>University Address</h4>
+              <p>Stellan University International Campus<br>
+              1 Academic Way<br>
+              Central London<br>
+              London WC2N, United Kingdom</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="card-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="card-content">
+              <h4>Main Contact</h4>
+              <p>Phone: +91 98765 43210<br>
+              Fax: +91 98765 43211<br>
+              Email: info@stellan.edu</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="card-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="card-content">
+              <h4>Office Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+              Saturday: 9:00 AM - 2:00 PM<br>
+              Sunday: Closed</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="card-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <div class="card-content">
+              <h4>Admissions Office</h4>
+              <p>Phone: +91 98765 43212<br>
+              Email: admissions@stellan.edu<br>
+              Hours: 9:00 AM - 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Find Us</h2>
+        <p>Visit our beautiful campus located in the heart of the education district</p>
+      </div>
+      
+      <div class="map-container">
+        <div class="interactive-map">
+          <div class="map-header">
+            <h3><i class="fas fa-map-marked-alt"></i> Interactive Campus Map</h3>
+            <div class="map-controls">
+              <button class="map-btn active" onclick="showMapView('satellite')">
+                <i class="fas fa-satellite"></i> Satellite
+              </button>
+              <button class="map-btn" onclick="showMapView('street')">
+                <i class="fas fa-road"></i> Street
+              </button>
+              <button class="map-btn" onclick="showMapView('hybrid')">
+                <i class="fas fa-layer-group"></i> Hybrid
+              </button>
+            </div>
+          </div>
+          
+          <div class="map-viewport">
+            <iframe
+              title="Stellan University Map"
+              src="https://www.google.com/maps?q=Stellan%20University%20International%20Campus%2C%20London%2C%20United%20Kingdom&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-marker main-campus" data-info="Main Campus Building">
+              <i class="fas fa-university"></i>
+              <div class="marker-label">Main Campus</div>
+              <div class="marker-pulse"></div>
+            </div>
+            <div class="map-marker library" data-info="Central Library">
+              <i class="fas fa-book"></i>
+              <div class="marker-label">Library</div>
+              <div class="marker-pulse"></div>
+            </div>
+            <div class="map-marker cafeteria" data-info="Student Cafeteria">
+              <i class="fas fa-utensils"></i>
+              <div class="marker-label">Cafeteria</div>
+              <div class="marker-pulse"></div>
+            </div>
+            <div class="map-marker auditorium" data-info="Main Auditorium">
+              <i class="fas fa-microphone"></i>
+              <div class="marker-label">Auditorium</div>
+              <div class="marker-pulse"></div>
+            </div>
+            <div class="map-marker gym" data-info="Sports Complex">
+              <i class="fas fa-dumbbell"></i>
+              <div class="marker-label">Sports Complex</div>
+              <div class="marker-pulse"></div>
+            </div>
+            <div class="map-marker metro" data-info="Metro Station">
+              <i class="fas fa-subway"></i>
+              <div class="marker-label">Metro Station</div>
+              <div class="marker-pulse"></div>
+            </div>
+            
+            <!-- Campus Roads -->
+            <div class="campus-road horizontal" style="top: 30%; left: 20%; width: 60%;"></div>
+            <div class="campus-road vertical" style="left: 50%; top: 20%; height: 60%;"></div>
+            <div class="campus-road horizontal" style="top: 60%; left: 30%; width: 40%;"></div>
+            
+            <!-- Campus Buildings -->
+            <div class="campus-building" style="top: 25%; left: 30%; width: 15%; height: 10%;">
+              <div class="building-label">Admin Block</div>
+            </div>
+            <div class="campus-building" style="top: 45%; left: 60%; width: 20%; height: 15%;">
+              <div class="building-label">Academic Block</div>
+            </div>
+            <div class="campus-building" style="top: 70%; left: 25%; width: 18%; height: 12%;">
+              <div class="building-label">Hostel Block</div>
+            </div>
+          </div>
+          
+          <div class="map-info-panel">
+            <div class="info-tabs">
+              <button class="info-tab active" onclick="showInfoTab('location')">Location</button>
+              <button class="info-tab" onclick="showInfoTab('transport')">Transport</button>
+              <button class="info-tab" onclick="showInfoTab('amenities')">Amenities</button>
+            </div>
+            <div class="info-content">
+              <div class="info-panel active" id="locationInfo">
+                <h4><i class="fas fa-map-marker-alt"></i> Campus Location</h4>
+                <p><strong>Address:</strong> 1 Academic Way, Central London, London WC2N, United Kingdom</p>
+                <p><strong>Coordinates:</strong> 51.5074° N, 0.1278° W</p>
+                <p><strong>Campus Size:</strong> 50 acres</p>
+                <p><strong>Established:</strong> 2025</p>
+              </div>
+              <div class="info-panel" id="transportInfo">
+                <h4><i class="fas fa-bus"></i> Transportation</h4>
+                <p><strong>Metro:</strong> Education District Station (500m)</p>
+                <p><strong>Bus Routes:</strong> 15, 23, 45, 67, 89</p>
+                <p><strong>Parking:</strong> 500+ spaces available</p>
+                <p><strong>Shuttle:</strong> Free campus shuttle service</p>
+              </div>
+              <div class="info-panel" id="amenitiesInfo">
+                <h4><i class="fas fa-star"></i> Campus Amenities</h4>
+                <p><strong>Library:</strong> 24/7 access, 50,000+ books</p>
+                <p><strong>Cafeteria:</strong> Multiple food courts</p>
+                <p><strong>Auditorium:</strong> 500-seat capacity events hall</p>
+                <p><strong>Sports Complex:</strong> Gym, courts, swimming pool</p>
+                <p><strong>WiFi:</strong> Campus-wide high-speed internet</p>
+              </div>
+            </div>
+            <button class="directions-btn" onclick="openDirections()">
+              <i class="fas fa-directions"></i>
+              Get Directions
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Department Contacts Section -->
+  <section class="departments-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Department Contacts</h2>
+        <p>Reach out to specific departments for specialized inquiries</p>
+      </div>
+
+      <div class="departments-grid">
+        <div class="department-card">
+          <div class="dept-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Computer Science</h3>
+          <div class="dept-contacts">
+            <p><i class="fas fa-user"></i> Dr. Sarah Johnson</p>
+            <p><i class="fas fa-phone"></i> +91 98765 43220</p>
+            <p><i class="fas fa-envelope"></i> cs@stellan.edu</p>
+          </div>
+        </div>
+
+        <div class="department-card">
+          <div class="dept-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3>Business Administration</h3>
+          <div class="dept-contacts">
+            <p><i class="fas fa-user"></i> Prof. Michael Brown</p>
+            <p><i class="fas fa-phone"></i> +91 98765 43221</p>
+            <p><i class="fas fa-envelope"></i> business@stellan.edu</p>
+          </div>
+        </div>
+
+        <div class="department-card">
+          <div class="dept-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>Mechanical Engineering</h3>
+          <div class="dept-contacts">
+            <p><i class="fas fa-user"></i> Dr. Emily Davis</p>
+            <p><i class="fas fa-phone"></i> +91 98765 43222</p>
+            <p><i class="fas fa-envelope"></i> mechanical@stellan.edu</p>
+          </div>
+        </div>
+
+        <div class="department-card">
+          <div class="dept-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Electrical Engineering</h3>
+          <div class="dept-contacts">
+            <p><i class="fas fa-user"></i> Prof. James Wilson</p>
+            <p><i class="fas fa-phone"></i> +91 98765 43223</p>
+            <p><i class="fas fa-envelope"></i> electrical@stellan.edu</p>
+          </div>
+        </div>
+
+        <div class="department-card">
+          <div class="dept-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3>Civil Engineering</h3>
+          <div class="dept-contacts">
+            <p><i class="fas fa-user"></i> Dr. Lisa Chen</p>
+            <p><i class="fas fa-phone"></i> +91 98765 43224</p>
+            <p><i class="fas fa-envelope"></i> civil@stellan.edu</p>
+          </div>
+        </div>
+
+        <div class="department-card">
+          <div class="dept-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>Medicine</h3>
+          <div class="dept-contacts">
+            <p><i class="fas fa-user"></i> Dr. Robert Martinez</p>
+            <p><i class="fas fa-phone"></i> +91 98765 43225</p>
+            <p><i class="fas fa-envelope"></i> medicine@stellan.edu</p>
+          </div>
+        </div>
+
+        <div class="department-card">
+          <div class="dept-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Psychology</h3>
+          <div class="dept-contacts">
+            <p><i class="fas fa-user"></i> Prof. Anna Taylor</p>
+            <p><i class="fas fa-phone"></i> +91 98765 43226</p>
+            <p><i class="fas fa-envelope"></i> psychology@stellan.edu</p>
+          </div>
+        </div>
+
+        <div class="department-card">
+          <div class="dept-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <h3>Culinary Arts</h3>
+          <div class="dept-contacts">
+            <p><i class="fas fa-user"></i> Chef Maria Rodriguez</p>
+            <p><i class="fas fa-phone"></i> +91 98765 43227</p>
+            <p><i class="fas fa-envelope"></i> culinary@stellan.edu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Section -->
+  <section class="social-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Follow Us</h2>
+        <p>Stay connected with Stellan University on social media</p>
+      </div>
+
+      <div class="social-grid">
+        <div class="social-card facebook">
+          <div class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </div>
+          <h3>Facebook</h3>
+          <p>Follow us for campus updates, events, and student achievements</p>
+          <a href="#" class="social-link" onclick="openSocial('facebook')">
+            <i class="fas fa-external-link-alt"></i>
+            Visit Page
+          </a>
+        </div>
+
+        <div class="social-card twitter">
+          <div class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </div>
+          <h3>Twitter</h3>
+          <p>Get real-time updates and announcements from our official account</p>
+          <a href="#" class="social-link" onclick="openSocial('twitter')">
+            <i class="fas fa-external-link-alt"></i>
+            Follow Us
+          </a>
+        </div>
+
+        <div class="social-card instagram">
+          <div class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </div>
+          <h3>Instagram</h3>
+          <p>See beautiful campus photos and student life moments</p>
+          <a href="#" class="social-link" onclick="openSocial('instagram')">
+            <i class="fas fa-external-link-alt"></i>
+            View Profile
+          </a>
+        </div>
+
+        <div class="social-card linkedin">
+          <div class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+          <h3>LinkedIn</h3>
+          <p>Connect with alumni and stay updated on career opportunities</p>
+          <a href="#" class="social-link" onclick="openSocial('linkedin')">
+            <i class="fas fa-external-link-alt"></i>
+            Connect
+          </a>
+        </div>
+
+        <div class="social-card youtube">
+          <div class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </div>
+          <h3>YouTube</h3>
+          <p>Watch campus tours, lectures, and university events</p>
+          <a href="#" class="social-link" onclick="openSocial('youtube')">
+            <i class="fas fa-external-link-alt"></i>
+            Subscribe
+          </a>
+        </div>
+
+        <div class="social-card whatsapp">
+          <div class="social-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Quick inquiries and instant support for students</p>
+          <a href="#" class="social-link" onclick="openSocial('whatsapp')">
+            <i class="fas fa-external-link-alt"></i>
+            Chat Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (identical to Home) -->
+  <footer id="contact" class="footer">
+    <div class="footer-container">
+      <!-- Left Column: Brand Row (small logo + text) -->
+      <div class="footer-about">
+        <div class="footer-brand-row">
+          <img src="../media/logo.png" alt="Stellan University" />
+          <div class="footer-brand-text">
+            <span class="name">Stellan University</span>
+            <span class="email"><a href="mailto:research@stellan.edu">research@stellan.edu</a></span>
+          </div>
+        </div>
+        <p>
+          Empowering students through education, innovation, and excellence.  
+          Our mission is to shape the leaders of tomorrow.
+        </p>
+      </div>
+
+      <!-- Middle Column: Quick Links -->
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="apply.html">Admissions</a></li>
+          <li><a href="home.html#program">Programs</a></li>
+          <li><a href="research-m.html">Research</a></li>
+          <li><a href="test.html">Campus Life</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Right Column: Contact, Newsletter & Social -->
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>📍 123 University Road, City, Country</p>
+        <p>📞 +91 98765 43210</p>
+        <p>✉️ research@stellan.edu</p>
+
+        <div class="newsletter">
+          <p>Subscribe to our newsletter</p>
+          <form id="contact-form">
+            <input id="Email" type="email" placeholder="Your email address" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Stellan University. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="contact2.js"></script>
+</body>
+</html>
